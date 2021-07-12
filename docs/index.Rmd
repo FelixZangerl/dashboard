@@ -27,7 +27,7 @@ Row
 This project is based on the work of [trendecon](https://www.trendecon.org)
 
 ```{r}
-economic_sentiment <- read_csv("../raw/at/economic_sentiment_sa.csv") %>%
+economic_sentiment <- read_csv("../raw/at/trendecon_sa.csv") %>%
   select(time,value) %>%
   ts_xts()
 
@@ -45,6 +45,7 @@ dygraph(economic_sentiment,group = "keywords")%>%
       dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
       dyOptions(useDataTimezone = TRUE)
 ```
+
 
 Row
 -----------------------------------------------------------------------
