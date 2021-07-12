@@ -3,8 +3,16 @@ title: "Trendecon Austria Dashboard"
 output: 
   flexdashboard::flex_dashboard:
     orientation: rows
+    theme: 
+      version: 4
+      bootswatch: flatly
     social: menu
     vertical_layout: scroll
+    navbar:
+      - {icon: "fa-github", 
+         title: "Dashboard", 
+         href: "https://github.com/FelixZangerl/dashboard", align: right, target: blank}
+      - {title: "R package", href: "https://trendecon.github.io/trendecon/", align: right, target: blank}    
 ---
 
 ```{r setup, include=FALSE}
