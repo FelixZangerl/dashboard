@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "Trendecon Austria Dashboard"
 output: 
   flexdashboard::flex_dashboard:
     orientation: rows
@@ -13,12 +13,16 @@ library(readr)
 library(tsbox)
 library(xts)
 library(dplyr)
+
+today <- as.character(Sys.Date())
 ```
 
 Column {data-width=650}
 -----------------------------------------------------------------------
 
-### Perceived Economic Situation
+### Perceived Economic Situation (work in progress)
+
+This project is based on the work of [trendecon](https://www.trendecon.org)
 
 ```{r}
 economic_sentiment <- read_csv("../raw/at/economic_sentiment_sa.csv") %>%
@@ -28,21 +32,139 @@ economic_sentiment <- read_csv("../raw/at/economic_sentiment_sa.csv") %>%
 dygraph(economic_sentiment,group = "keywords")%>%
   dyAxis("x", drawGrid = FALSE)%>%
   dySeries("value", label = "Index")%>%
-    dyOptions(useDataTimezone = TRUE)
+    dyEvent("2020-3-13", "Lockdown #1", labelLoc = "bottom")%>%
+      dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
+      dyOptions(useDataTimezone = TRUE)
 ```
 
 Column {data-width=350}
 -----------------------------------------------------------------------
 
-### Chart B
+### Clothing
 
 ```{r}
+clothing <- read_csv("../raw/at/clothing_sa.csv") %>%
+  select(time,value) %>%
+  ts_xts()
 
+dygraph(clothing,group = "keywords")%>%
+  dyAxis("x", drawGrid = FALSE)%>%
+  dySeries("value", label = "Index")%>%
+    dyEvent("2020-3-13", "Lockdown #1", labelLoc = "bottom")%>%
+      dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
+      dyOptions(useDataTimezone = TRUE)
 ```
 
-### Chart C
+### Home Office
 
 ```{r}
+home_office <- read_csv("../raw/at/home_office_sa.csv") %>%
+  select(time,value) %>%
+  ts_xts()
 
+dygraph(home_office,group = "keywords")%>%
+  dyAxis("x", drawGrid = FALSE)%>%
+  dySeries("value", label = "Index")%>%
+    dyEvent("2020-3-13", "Lockdown #1", labelLoc = "bottom")%>%
+      dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
+      dyOptions(useDataTimezone = TRUE)
 ```
 
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Gardening
+
+```{r}
+gardening <- read_csv("../raw/at/gardening_sa.csv") %>%
+  select(time,value) %>%
+  ts_xts()
+
+dygraph(gardening,group = "keywords")%>%
+  dyAxis("x", drawGrid = FALSE)%>%
+  dySeries("value", label = "Index")%>%
+    dyEvent("2020-3-13", "Lockdown #1", labelLoc = "bottom")%>%
+      dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
+      dyOptions(useDataTimezone = TRUE)
+```
+
+### Food Delivery
+
+```{r}
+food_delivery <- read_csv("../raw/at/food_delivery_sa.csv") %>%
+  select(time,value) %>%
+  ts_xts()
+
+dygraph(food_delivery,group = "keywords")%>%
+  dyAxis("x", drawGrid = FALSE)%>%
+  dySeries("value", label = "Index")%>%
+    dyEvent("2020-3-13", "Lockdown #1", labelLoc = "bottom")%>%
+      dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
+      dyOptions(useDataTimezone = TRUE)
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Cultural
+
+```{r}
+cultural <- read_csv("../raw/at/cultural_sa.csv") %>%
+  select(time,value) %>%
+  ts_xts()
+
+dygraph(cultural,group = "keywords")%>%
+  dyAxis("x", drawGrid = FALSE)%>%
+  dySeries("value", label = "Index")%>%
+    dyEvent("2020-3-13", "Lockdown #1", labelLoc = "bottom")%>%
+      dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
+      dyOptions(useDataTimezone = TRUE)
+```
+
+### Travel
+
+```{r}
+travel <- read_csv("../raw/at/travel_sa.csv") %>%
+  select(time,value) %>%
+  ts_xts()
+
+dygraph(travel,group = "keywords")%>%
+  dyAxis("x", drawGrid = FALSE)%>%
+  dySeries("value", label = "Index")%>%
+    dyEvent("2020-3-13", "Lockdown #1", labelLoc = "bottom")%>%
+      dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
+      dyOptions(useDataTimezone = TRUE)
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Mobility
+
+```{r}
+mobility <- read_csv("../raw/at/mobility_sa.csv") %>%
+  select(time,value) %>%
+  ts_xts()
+
+dygraph(mobility,group = "keywords")%>%
+  dyAxis("x", drawGrid = FALSE)%>%
+  dySeries("value", label = "Index")%>%
+    dyEvent("2020-3-13", "Lockdown #1", labelLoc = "bottom")%>%
+      dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
+      dyOptions(useDataTimezone = TRUE)
+```
+
+### Jewelry
+
+```{r}
+jewelry <- read_csv("../raw/at/luxury_sa.csv") %>%
+  select(time,value) %>%
+  ts_xts()
+
+dygraph(jewelry,group = "keywords")%>%
+  dyAxis("x", drawGrid = FALSE)%>%
+  dySeries("value", label = "Index")%>%
+    dyEvent("2020-3-13", "Lockdown #1", labelLoc = "bottom")%>%
+      dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
+      dyOptions(useDataTimezone = TRUE)
+```
