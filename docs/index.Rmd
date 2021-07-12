@@ -37,7 +37,7 @@ dygraph(economic_sentiment,group = "keywords")%>%
     dyEvent("2020-3-16", "Lockdown #1", labelLoc = "bottom")%>%
     dyEvent("2020-5-1", "End of Lockdown #1", labelLoc = "bottom")%>%
     dyEvent("2020-9-14", "Mandatory wearing of masks", labelLoc = "bottom")%>%
-    dyEvent("2020-9-21", "Restrictions gastronomy and events", labelLoc = "bottom")%>%
+    dyEvent("2020-9-21", "Lockdown 'light'", labelLoc = "bottom")%>%
     dyEvent("2020-11-17", "Lockdown #2", labelLoc = "bottom")%>%
     dyEvent("2020-12-6", "End of Lockdown #2", labelLoc = "bottom")%>%
     dyEvent("2020-12-26", "Lockdown #3", labelLoc = "bottom")%>%
@@ -59,7 +59,14 @@ clothing <- read_csv("../raw/at/clothing_sa.csv") %>%
 dygraph(clothing,group = "keywords")%>%
   dyAxis("x", drawGrid = FALSE)%>%
   dySeries("value", label = "Index")%>%
-    dyEvent("2020-3-13", "Lockdown #1", labelLoc = "bottom")%>%
+   dyEvent("2020-3-16", "Lockdown #1", labelLoc = "bottom")%>%
+    dyEvent("2020-5-1", "End of Lockdown #1", labelLoc = "bottom")%>%
+    dyEvent("2020-9-14", "Mandatory wearing of masks", labelLoc = "bottom")%>%
+    dyEvent("2020-9-21", "Lockdown 'light'", labelLoc = "bottom")%>%
+    dyEvent("2020-11-17", "Lockdown #2", labelLoc = "bottom")%>%
+    dyEvent("2020-12-6", "End of Lockdown #2", labelLoc = "bottom")%>%
+    dyEvent("2020-12-26", "Lockdown #3", labelLoc = "bottom")%>%
+    dyEvent("2021-2-7", "End of Lockdown #3", labelLoc = "bottom")%>%
       dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
       dyOptions(useDataTimezone = TRUE)
 ```
@@ -77,7 +84,14 @@ home_office <- read_csv("../raw/at/home_office_sa.csv") %>%
 dygraph(home_office,group = "keywords")%>%
   dyAxis("x", drawGrid = FALSE)%>%
   dySeries("value", label = "Index")%>%
-    dyEvent("2020-3-13", "Lockdown #1", labelLoc = "bottom")%>%
+    dyEvent("2020-3-16", "Lockdown #1", labelLoc = "bottom")%>%
+    dyEvent("2020-5-1", "End of Lockdown #1", labelLoc = "bottom")%>%
+    dyEvent("2020-9-14", "Mandatory wearing of masks", labelLoc = "bottom")%>%
+    dyEvent("2020-9-21", "Lockdown 'light'", labelLoc = "bottom")%>%
+    dyEvent("2020-11-17", "Lockdown #2", labelLoc = "bottom")%>%
+    dyEvent("2020-12-6", "End of Lockdown #2", labelLoc = "bottom")%>%
+    dyEvent("2020-12-26", "Lockdown #3", labelLoc = "bottom")%>%
+    dyEvent("2021-2-7", "End of Lockdown #3", labelLoc = "bottom")%>%
       dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
       dyOptions(useDataTimezone = TRUE)
 ```
@@ -95,7 +109,14 @@ gardening <- read_csv("../raw/at/gardening_sa.csv") %>%
 dygraph(gardening,group = "keywords")%>%
   dyAxis("x", drawGrid = FALSE)%>%
   dySeries("value", label = "Index")%>%
-    dyEvent("2020-3-13", "Lockdown #1", labelLoc = "bottom")%>%
+    dyEvent("2020-3-16", "Lockdown #1", labelLoc = "bottom")%>%
+    dyEvent("2020-5-1", "End of Lockdown #1", labelLoc = "bottom")%>%
+    dyEvent("2020-9-14", "Mandatory wearing of masks", labelLoc = "bottom")%>%
+    dyEvent("2020-9-21", "Lockdown 'light'", labelLoc = "bottom")%>%
+    dyEvent("2020-11-17", "Lockdown #2", labelLoc = "bottom")%>%
+    dyEvent("2020-12-6", "End of Lockdown #2", labelLoc = "bottom")%>%
+    dyEvent("2020-12-26", "Lockdown #3", labelLoc = "bottom")%>%
+    dyEvent("2021-2-7", "End of Lockdown #3", labelLoc = "bottom")%>%
       dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
       dyOptions(useDataTimezone = TRUE)
 ```
@@ -110,7 +131,14 @@ food_delivery <- read_csv("../raw/at/food_delivery_sa.csv") %>%
 dygraph(food_delivery,group = "keywords")%>%
   dyAxis("x", drawGrid = FALSE)%>%
   dySeries("value", label = "Index")%>%
-    dyEvent("2020-3-13", "Lockdown #1", labelLoc = "bottom")%>%
+    dyEvent("2020-3-16", "Lockdown #1", labelLoc = "bottom")%>%
+    dyEvent("2020-5-1", "End of Lockdown #1", labelLoc = "bottom")%>%
+    dyEvent("2020-9-14", "Mandatory wearing of masks", labelLoc = "bottom")%>%
+    dyEvent("2020-9-21", "Lockdown 'light'", labelLoc = "bottom")%>%
+    dyEvent("2020-11-17", "Lockdown #2", labelLoc = "bottom")%>%
+    dyEvent("2020-12-6", "End of Lockdown #2", labelLoc = "bottom")%>%
+    dyEvent("2020-12-26", "Lockdown #3", labelLoc = "bottom")%>%
+    dyEvent("2021-2-7", "End of Lockdown #3", labelLoc = "bottom")%>%
       dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
       dyOptions(useDataTimezone = TRUE)
 ```
@@ -128,7 +156,14 @@ cultural <- read_csv("../raw/at/cultural_sa.csv") %>%
 dygraph(cultural,group = "keywords")%>%
   dyAxis("x", drawGrid = FALSE)%>%
   dySeries("value", label = "Index")%>%
-    dyEvent("2020-3-13", "Lockdown #1", labelLoc = "bottom")%>%
+    dyEvent("2020-3-16", "Lockdown #1", labelLoc = "bottom")%>%
+    dyEvent("2020-5-1", "End of Lockdown #1", labelLoc = "bottom")%>%
+    dyEvent("2020-9-14", "Mandatory wearing of masks", labelLoc = "bottom")%>%
+    dyEvent("2020-9-21", "Lockdown 'light'", labelLoc = "bottom")%>%
+    dyEvent("2020-11-17", "Lockdown #2", labelLoc = "bottom")%>%
+    dyEvent("2020-12-6", "End of Lockdown #2", labelLoc = "bottom")%>%
+    dyEvent("2020-12-26", "Lockdown #3", labelLoc = "bottom")%>%
+    dyEvent("2021-2-7", "End of Lockdown #3", labelLoc = "bottom")%>%
       dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
       dyOptions(useDataTimezone = TRUE)
 ```
@@ -143,7 +178,14 @@ travel <- read_csv("../raw/at/travel_sa.csv") %>%
 dygraph(travel,group = "keywords")%>%
   dyAxis("x", drawGrid = FALSE)%>%
   dySeries("value", label = "Index")%>%
-    dyEvent("2020-3-13", "Lockdown #1", labelLoc = "bottom")%>%
+    dyEvent("2020-3-16", "Lockdown #1", labelLoc = "bottom")%>%
+    dyEvent("2020-5-1", "End of Lockdown #1", labelLoc = "bottom")%>%
+    dyEvent("2020-9-14", "Mandatory wearing of masks", labelLoc = "bottom")%>%
+    dyEvent("2020-9-21", "Lockdown 'light'", labelLoc = "bottom")%>%
+    dyEvent("2020-11-17", "Lockdown #2", labelLoc = "bottom")%>%
+    dyEvent("2020-12-6", "End of Lockdown #2", labelLoc = "bottom")%>%
+    dyEvent("2020-12-26", "Lockdown #3", labelLoc = "bottom")%>%
+    dyEvent("2021-2-7", "End of Lockdown #3", labelLoc = "bottom")%>%
       dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
       dyOptions(useDataTimezone = TRUE)
 ```
@@ -161,7 +203,14 @@ mobility <- read_csv("../raw/at/mobility_sa.csv") %>%
 dygraph(mobility,group = "keywords")%>%
   dyAxis("x", drawGrid = FALSE)%>%
   dySeries("value", label = "Index")%>%
-    dyEvent("2020-3-13", "Lockdown #1", labelLoc = "bottom")%>%
+    dyEvent("2020-3-16", "Lockdown #1", labelLoc = "bottom")%>%
+    dyEvent("2020-5-1", "End of Lockdown #1", labelLoc = "bottom")%>%
+    dyEvent("2020-9-14", "Mandatory wearing of masks", labelLoc = "bottom")%>%
+    dyEvent("2020-9-21", "Lockdown 'light'", labelLoc = "bottom")%>%
+    dyEvent("2020-11-17", "Lockdown #2", labelLoc = "bottom")%>%
+    dyEvent("2020-12-6", "End of Lockdown #2", labelLoc = "bottom")%>%
+    dyEvent("2020-12-26", "Lockdown #3", labelLoc = "bottom")%>%
+    dyEvent("2021-2-7", "End of Lockdown #3", labelLoc = "bottom")%>%
       dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
       dyOptions(useDataTimezone = TRUE)
 ```
@@ -176,7 +225,14 @@ jewelry <- read_csv("../raw/at/luxury_sa.csv") %>%
 dygraph(jewelry,group = "keywords")%>%
   dyAxis("x", drawGrid = FALSE)%>%
   dySeries("value", label = "Index")%>%
-    dyEvent("2020-3-13", "Lockdown #1", labelLoc = "bottom")%>%
+    dyEvent("2020-3-16", "Lockdown #1", labelLoc = "bottom")%>%
+    dyEvent("2020-5-1", "End of Lockdown #1", labelLoc = "bottom")%>%
+    dyEvent("2020-9-14", "Mandatory wearing of masks", labelLoc = "bottom")%>%
+    dyEvent("2020-9-21", "Lockdown 'light'", labelLoc = "bottom")%>%
+    dyEvent("2020-11-17", "Lockdown #2", labelLoc = "bottom")%>%
+    dyEvent("2020-12-6", "End of Lockdown #2", labelLoc = "bottom")%>%
+    dyEvent("2020-12-26", "Lockdown #3", labelLoc = "bottom")%>%
+    dyEvent("2021-2-7", "End of Lockdown #3", labelLoc = "bottom")%>%
       dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
       dyOptions(useDataTimezone = TRUE)
 ```
