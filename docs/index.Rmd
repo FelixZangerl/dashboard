@@ -41,7 +41,7 @@ dygraph(economic_sentiment,group = "keywords")%>%
     dyEvent("2020-11-17", "Lockdown #2", labelLoc = "bottom")%>%
     dyEvent("2020-12-6", "End of Lockdown #2", labelLoc = "bottom")%>%
     dyEvent("2020-12-26", "Lockdown #3", labelLoc = "bottom")%>%
-    dyEvent("2020-2-7", "End of Lockdown #3", labelLoc = "bottom")%>%
+    dyEvent("2021-2-7", "End of Lockdown #3", labelLoc = "bottom")%>%
       dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
       dyOptions(useDataTimezone = TRUE)
 ```
