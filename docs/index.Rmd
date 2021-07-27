@@ -34,8 +34,8 @@ Row
 
 ### Perceived Economic Situation
 
-```{r}
-economic_sentiment <- read_csv("../raw/at/trendecon_sa.csv") %>%
+```{r, eval=T}
+economic_sentiment <- read_csv("https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/economic_sentiment_sa.csv") %>%
   select(time,value) %>%
   ts_xts()
 
@@ -65,7 +65,7 @@ Row
 ### Clothing
 
 ```{r}
-clothing <- read_csv("../raw/at/clothing_sa.csv") %>%
+clothing <- read_csv("https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/clothing_sa.csv") %>%
   select(time,value) %>%
   ts_xts()
 
@@ -93,7 +93,7 @@ Row
 ### Home Office
 
 ```{r}
-home_office <- read_csv("../raw/at/home_office_sa.csv") %>%
+home_office <- read_csv("https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/home_office_sa.csv") %>%
   select(time,value) %>%
   ts_xts()
 
@@ -121,7 +121,7 @@ Row
 ### Gardening
 
 ```{r}
-gardening <- read_csv("../raw/at/gardening_sa.csv") %>%
+gardening <- read_csv("https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/gardening_sa.csv") %>%
   select(time,value) %>%
   ts_xts()
 
@@ -146,7 +146,7 @@ dygraph(gardening,group = "keywords")%>%
 ### Food Delivery
 
 ```{r}
-food_delivery <- read_csv("../raw/at/food_delivery_sa.csv") %>%
+food_delivery <- read_csv("https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/food_delivery_sa.csv") %>%
   select(time,value) %>%
   ts_xts()
 
@@ -174,7 +174,7 @@ Column {data-width=350}
 ### Cultural
 
 ```{r}
-cultural <- read_csv("../raw/at/cultural_sa.csv") %>%
+cultural <- read_csv("https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/cultural_sa.csv") %>%
   select(time,value) %>%
   ts_xts()
 
@@ -199,7 +199,7 @@ dygraph(cultural,group = "keywords")%>%
 ### Travel
 
 ```{r}
-travel <- read_csv("../raw/at/travel_sa.csv") %>%
+travel <- read_csv("https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/travel_sa.csv") %>%
   select(time,value) %>%
   ts_xts()
 
@@ -227,7 +227,7 @@ Column {data-width=350}
 ### Mobility
 
 ```{r}
-mobility <- read_csv("../raw/at/mobility_sa.csv") %>%
+mobility <- read_csv("https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/mobility_sa.csv") %>%
   select(time,value) %>%
   ts_xts()
 
@@ -252,7 +252,7 @@ dygraph(mobility,group = "keywords")%>%
 ### Jewelry
 
 ```{r}
-jewelry <- read_csv("../raw/at/luxury_sa.csv") %>%
+jewelry <- read_csv("https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/luxury_sa.csv") %>%
   select(time,value) %>%
   ts_xts()
 
