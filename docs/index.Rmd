@@ -35,7 +35,7 @@ Row
 ### Perceived Economic Situation
 
 ```{r, eval=T}
-economic_sentiment <- read_csv("https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/economic_sentiment_sa.csv") %>%
+economic_sentiment <- read_csv("https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/data/at") %>%
   select(time,value) %>%
   ts_xts()
 
