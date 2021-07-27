@@ -23,6 +23,7 @@ library(readr)
 library(tsbox)
 library(xts)
 library(dplyr)
+library(knitr)
 
 today <- as.character(Sys.Date())
 ```
