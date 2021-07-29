@@ -3,7 +3,9 @@ get_stage("install") %>%
   add_step(step_install_cran("flexdashboard")) %>%
   add_step(step_install_cran("htmlwidgets")) %>%
   add_step(step_install_cran("knitr")) %>%
-  add_step(step_install_cran("tsbox"))
+  add_step(step_install_cran("tsbox"))%>%
+  add_step(step_install_cran("readr"))%>%
+  
 
 get_stage("before_deploy") %>%
   add_step(step_setup_ssh()) %>%
