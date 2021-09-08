@@ -145,6 +145,9 @@ dygraph(gardening,group = "keywords")%>%
       dyOptions(useDataTimezone = TRUE)
 ```
 
+Row
+-----------------------------------------------------------------------
+
 ### Food Delivery
 
 ```{r}
@@ -170,7 +173,7 @@ dygraph(food_delivery,group = "keywords")%>%
       dyOptions(useDataTimezone = TRUE)
 ```
 
-Column {data-width=350}
+Row
 -----------------------------------------------------------------------
 
 ### Cultural
@@ -198,6 +201,9 @@ dygraph(cultural,group = "keywords")%>%
       dyOptions(useDataTimezone = TRUE)
 ```
 
+Row
+-----------------------------------------------------------------------
+
 ### Travel
 
 ```{r}
@@ -223,7 +229,7 @@ dygraph(travel,group = "keywords")%>%
       dyOptions(useDataTimezone = TRUE)
 ```
 
-Column {data-width=350}
+Row
 -----------------------------------------------------------------------
 
 ### Mobility
@@ -250,6 +256,9 @@ dygraph(mobility,group = "keywords")%>%
       dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
       dyOptions(useDataTimezone = TRUE)
 ```
+
+Row
+-----------------------------------------------------------------------
 
 ### Jewelry
 
