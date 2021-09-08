@@ -1,5 +1,5 @@
 ---
-title: "Trendecon Austria Dashboard"
+title: "trendEcon Austria Dashboard"
 output: 
   flexdashboard::flex_dashboard:
     orientation: rows
@@ -28,16 +28,16 @@ library(knitr)
 today <- as.character(Sys.Date())
 ```
 
+### trendEcon Austria
 
-This project is based on the work of [trendecon](https://www.trendecon.org)
+This project is based on the work of [trendEcon](https://www.trendecon.org)
 
-Row
------------------------------------------------------------------------
+## Row {.tabset .tabset-fade}
 
 ### Perceived Economic Situation
 
 ```{r, eval=T}
-economic_sentiment <- read_csv("https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/economic_sentiment_sa.csv") %>%
+economic_sentiment <- read_csv("https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/trendecon_sa.csv") %>%
   select(time,value) %>%
   mutate(value = -value) %>%
   ts_xts()
@@ -61,9 +61,22 @@ dygraph(economic_sentiment,group = "keywords")%>%
       dyOptions(useDataTimezone = TRUE)
 ```
 
+### Info
 
-Row
------------------------------------------------------------------------
+###### Description
+
+The indicator for *Perceived Economic Situation* includes search terms that reflect people’s worries about the economy. For instance, people then google “economic crisis” (Wirtschaftskrise).
+
+###### Keywords
+
+- Wirtschaftskrise
+- Kurzarbeit
+- arbeitslos
+- Insolvenz
+
+[Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/trendecon_sa.csv){target="_blank"}
+
+## Row {.tabset .tabset-fade}
 
 ### Clothing
 
@@ -90,8 +103,25 @@ dygraph(clothing,group = "keywords")%>%
       dyOptions(useDataTimezone = TRUE)
 ```
 
-Row
------------------------------------------------------------------------
+### Info
+
+###### Description
+
+The category *Clothing and Shoes* includes clothing and shoe stores as well as a general search terms related to buying clothes and shoes. trendEcon found that people directly google for the brands they like. Note: the searchword “zalando” was not included because Zalando was not available in Austria before 2012.
+
+###### Keywords
+
+- mango
+- zara 
+- H&M 
+- blue 
+- tomato
+- schuhe kaufen 
+- deichmann
+
+[Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/clothing_sa.csv){target="_blank"}
+
+## Row {.tabset .tabset-fade}
 
 ### Home Office
 
@@ -118,10 +148,24 @@ dygraph(home_office,group = "keywords")%>%
       dyOptions(useDataTimezone = TRUE)
 ```
 
-Row
------------------------------------------------------------------------
+### Info
 
-### Gardening
+###### Description
+
+The category *Home Office* combine Google inquiries related to the new normal of working from home. The working-from-home-index contains the search terms:
+
+###### Keywords
+
+- headset
+- monitor
+- maus
+- hdmi
+
+[Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/home_office_sa.csv){target="_blank"}
+
+## Row {.tabset .tabset-fade}
+
+### Gardening and Home Improvement
 
 ```{r}
 gardening <- read_csv("https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/gardening_sa.csv") %>%
@@ -146,8 +190,23 @@ dygraph(gardening,group = "keywords")%>%
       dyOptions(useDataTimezone = TRUE)
 ```
 
-Row
------------------------------------------------------------------------
+### Info
+
+###### Description
+
+The category *Gardening and Home Improvement* includes stores selling materials for home improvement such as building materials, garden accessories and electrical supplies.
+
+###### Keywords
+
+- Heim+Hobby
+- Bau+Hobby
+- Bauhaus
+- hornbach
+- obi
+
+[Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/gardening_sa.csv){target="_blank"}
+
+## Row {.tabset .tabset-fade}
 
 ### Food Delivery
 
@@ -174,8 +233,21 @@ dygraph(food_delivery,group = "keywords")%>%
       dyOptions(useDataTimezone = TRUE)
 ```
 
-Row
------------------------------------------------------------------------
+### Info
+
+###### Description
+
+The category *Food Delivery* includes search terms related to take away and ordering pizza.
+
+###### Keywords
+
+- take away
+- takeaway 
+- pizza bestellen
+
+[Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/food_delivery_sa.csv){target="_blank"}
+
+## Row {.tabset .tabset-fade}
 
 ### Cultural
 
@@ -202,10 +274,27 @@ dygraph(cultural,group = "keywords")%>%
       dyOptions(useDataTimezone = TRUE)
 ```
 
-Row
------------------------------------------------------------------------
+### Info
 
-### Travel
+###### Description
+
+The category *Cultural Events* includes search terms related to concerts, theatres, cinema and ticket providers for such events.
+
+###### Keywords
+
+- kino
+- theater
+- cinema
+- cineplexx
+- oper
+- konzert
+- oeticket
+
+[Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/cultural_sa.csv){target="_blank"}
+
+## Row {.tabset .tabset-fade}
+
+### Travel Abroad
 
 ```{r}
 travel <- read_csv("https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/travel_sa.csv") %>%
@@ -230,8 +319,21 @@ dygraph(travel,group = "keywords")%>%
       dyOptions(useDataTimezone = TRUE)
 ```
 
-Row
------------------------------------------------------------------------
+### Info
+
+###### Description
+
+The category *Travel Abroad* includes search terms used to book flights and holidays.
+
+###### Keywords
+
+- städtetrip
+- flug buchen
+- günstige flüge
+
+[Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/travel_sa.csv){target="_blank"}
+
+## Row {.tabset .tabset-fade}
 
 ### Mobility
 
@@ -258,10 +360,24 @@ dygraph(mobility,group = "keywords")%>%
       dyOptions(useDataTimezone = TRUE)
 ```
 
-Row
------------------------------------------------------------------------
+### Info
 
-### Jewelry
+###### Description
+
+The category *Mobility* includes search terms related to ground transportation: For instance, checking the railway schedule or calling a taxi.
+
+###### Keywords
+
+- Fahrplan
+- taxi
+- sixt
+- google maps
+
+[Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/mobility_sa.csv){target="_blank"}
+
+## Row {.tabset .tabset-fade}
+
+### Watches and Jewelry
 
 ```{r}
 jewelry <- read_csv("https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/luxury_sa.csv") %>%
@@ -285,3 +401,20 @@ dygraph(jewelry,group = "keywords")%>%
       dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
       dyOptions(useDataTimezone = TRUE)
 ```
+
+### Info
+
+###### Description
+
+The category *Watches and Jewellery* includes stores and brands selling luxurious watches and jewellery goods and related, more general search terms for luxury consumer goods.
+
+###### Keywords
+
+- juwelier
+- swarovski
+- uhr
+- uhren
+- christ
+- feichtinger
+
+[Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/luxury_sa.csv){target="_blank"}
