@@ -28,6 +28,7 @@ library(knitr)
 today <- as.character(Sys.Date())
 ```
 
+
 This project is based on the work of [trendecon](https://www.trendecon.org)
 
 Row
