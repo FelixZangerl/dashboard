@@ -30,7 +30,7 @@ today <- as.character(Sys.Date())
 
 ### trendEcon Austria
 
-This project is based on the work of [trendEcon](https://www.trendecon.org)
+This dashboard is based on the work of [trendEcon](https://www.trendecon.org)
 
 ## Row {.tabset .tabset-fade}
 
