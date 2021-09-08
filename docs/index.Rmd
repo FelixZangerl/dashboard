@@ -77,7 +77,7 @@ The indicator for *Perceived Economic Situation* includes search terms that refl
 
 ## Row {.tabset .tabset-fade}
 
-### Clothing
+### Clothing and Shoes
 
 ```{r}
 clothing <- read_csv("https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/clothing_sa.csv") %>%
