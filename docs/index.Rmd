@@ -39,7 +39,6 @@ This dashboard is based on the work of [trendEcon](https://www.trendecon.org)
 ```{r, eval=T}
 economic_sentiment <- read_csv("https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/trendecon_sa.csv") %>%
   select(time,value) %>%
-  mutate(value = -value) %>%
   ts_xts()
 
 dygraph(economic_sentiment,group = "keywords")%>%
