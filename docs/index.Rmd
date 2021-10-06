@@ -539,7 +539,7 @@ plotly::ggplotly(pred_os_plot)
 ```
 
 
-## Row {.tabset .tabset-fade data-height=600}
+## Row {.tabset .tabset-fade data-height=700}
 
 ### In-sample Forecast (3M ahead)
 
