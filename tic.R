@@ -5,7 +5,8 @@ get_stage("install") %>%
   add_step(step_install_cran("knitr")) %>%
   add_step(step_install_cran("tsbox"))%>%
   add_step(step_install_cran("readr"))%>%
-  add_step(step_install_cran("dplyr"))
+  add_step(step_install_cran("dplyr")) %>%
+  add_step(step_install_cran("ggplot2"))
   
 
 get_stage("before_deploy") %>%
