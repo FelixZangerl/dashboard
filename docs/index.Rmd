@@ -492,11 +492,12 @@ source <- "https://github.com/FelixZangerl/gsv_data/blob/main/r_data/var.RData?r
 load(url(source))
 ```
 
-\[\mathbf{x_t^{AT}} = [ PES_t^{AT}, u_t^{AT}, P_t^{AT}] \]
 
-Vector Autoregressive Model with 6 lags
 
 ### Results
+
+Vector Autoregressive Model with 6 lags: \(\mathbf{x_t^{AT}} = [ PES_t^{AT}, u_t^{AT}, P_t^{AT}] \)
+
 
 ```{r, results='asis'}
 library(stargazer)
