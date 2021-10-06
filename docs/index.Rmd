@@ -33,7 +33,7 @@ today <- as.character(Sys.Date())
 
 ### trendEcon Austria
 
-This dashboard is based on the work of [trendEcon](https://www.trendecon.org)
+This dashboard is based on the work of [trendEcon](https://www.trendecon.org). The data are scraped from Google Trends through the use of the `trendecon` R-package. The sectoral indicators are slightly adapted to match Austrian search keywords (e.g. different stores). The main focus of this project is to test the accuracy of the main indicator (PES) in a VAR forecasting framework.
 
 ## Row {.tabset .tabset-fade}
 
@@ -455,9 +455,9 @@ The category *Watches and Jewellery* includes stores and brands selling luxuriou
 
 # PES
 
-### Perceived Economic Situation (monthly)
+### {data-height=800} 
 
-How well does the indicator coincide with the consumer confidence index and with GDP (quarterly data).
+The main indicator shows co-movement with the consumer confidence and with the quarterly GDP growth rate. However, in contrast to the trendEcon results for Germany and Switzerland, the main indicator as well as the consumer confidence insufficiently capture the impact of the World Financial Crisis on GDP in the years after 2008/09.  
 
 ```{r}
 source <- "https://github.com/FelixZangerl/gsv_data/blob/main/r_data/reliability.RData?raw=true"
@@ -472,7 +472,7 @@ ts_dygraphs(ts_c(
   dySeries("GDP growth", strokePattern = "dashed") %>%
   dySeries("Consumer Confidence", strokePattern = "dotted") %>%
   dyAxis("x", drawGrid = FALSE) %>%
-#  dyRangeSelector(dateWindow = c("2020-01-01", Sys.Date()))%>%
+#  dyRangeSelector(dateWindow = c("2020-01-01", as.character(end(pes))))%>%
   dyOptions(useDataTimezone = TRUE)
 ```
 
@@ -491,8 +491,6 @@ library(ggfortify)
 source <- "https://github.com/FelixZangerl/gsv_data/blob/main/r_data/var.RData?raw=true"
 load(url(source))
 ```
-
-
 
 ### Results
 
