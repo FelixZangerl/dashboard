@@ -460,7 +460,9 @@ The category *Watches and Jewellery* includes stores and brands selling luxuriou
 ```{r}
 library(vars)
 library(ggfortify)
-load("../../gsv_data/r_data/var.RData")
+#load("../../gsv_data/r_data/var.RData")
+source <- "https://github.com/FelixZangerl/gsv_data/blob/main/r_data/var.RData?raw=true"
+load(url(source))
 ```
 
 \[\mathbf{x_t^{AT}} = [ PES_t^{AT}, u_t^{AT}, P_t^{AT}] \]
