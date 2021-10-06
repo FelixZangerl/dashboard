@@ -449,6 +449,33 @@ The category *Watches and Jewellery* includes stores and brands selling luxuriou
 
 [Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/luxury_sa.csv){target="_blank"}
 
+<!----------------------------------------------------------------------->
+<!---------------------------------------------------- PES PAGE --------->
+<!----------------------------------------------------------------------->
+
+# PES
+
+### Perceived Economic Situation (monthly)
+
+How well does the indicator coincide with the consumer confidence index and with GDP (quarterly data).
+
+```{r}
+source <- "https://github.com/FelixZangerl/gsv_data/blob/main/r_data/reliability.RData?raw=true"
+load(url(source))
+
+ts_dygraphs(ts_c(
+  `Perceived Economic Situation` = pes,
+  `GDP growth` = gdp,
+  `Consumer Confidence` = cc
+))  %>%
+  dySeries("Perceived Economic Situation", strokeWidth=3) %>%
+  dySeries("GDP growth", strokePattern = "dashed") %>%
+  dySeries("Consumer Confidence", strokePattern = "dotted") %>%
+  dyAxis("x", drawGrid = FALSE) %>%
+#  dyRangeSelector(dateWindow = c("2020-01-01", Sys.Date()))%>%
+  dyOptions(useDataTimezone = TRUE)
+```
+
 
 <!----------------------------------------------------------------------->
 <!---------------------------------------------------- VAR PAGE --------->
