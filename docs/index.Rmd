@@ -12,7 +12,7 @@ output:
       - {icon: "fa-github", 
          title: "Dashboard", 
          href: "https://github.com/FelixZangerl/dashboard", align: right, target: blank}
-      - {title: "R package", href: "https://trendecon.github.io/trendecon/", align: right, target: blank}    
+      - {title: "R package", href: "https://trendecon.github.io/trendecon/", align: right, target: blank}
 ---
 
 ```{r setup, include=FALSE}
@@ -24,9 +24,12 @@ library(tsbox)
 library(xts)
 library(dplyr)
 library(knitr)
+library(ggplot2)
 
 today <- as.character(Sys.Date())
 ```
+
+# Home
 
 ### trendEcon Austria
 
@@ -37,9 +40,13 @@ This dashboard is based on the work of [trendEcon](https://www.trendecon.org)
 ### Perceived Economic Situation
 
 ```{r, eval=T}
-economic_sentiment <- read_csv("https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/trendecon_sa.csv") %>%
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/trendecon_sa.csv"
+source <- "../../gsv_data/raw/at/trendecon_sa.csv"
+
+economic_sentiment <- read_csv(source) %>%
   select(time,value) %>%
   ts_xts()
+
 
 dygraph(economic_sentiment,group = "keywords")%>%
   dyAxis("x", drawGrid = FALSE)%>%
@@ -59,6 +66,7 @@ dygraph(economic_sentiment,group = "keywords")%>%
       dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
       dyOptions(useDataTimezone = TRUE)
 ```
+
 
 ### Info
 
@@ -80,7 +88,10 @@ The indicator for *Perceived Economic Situation* includes search terms that refl
 ### Clothing and Shoes
 
 ```{r}
-clothing <- read_csv("https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/clothing_sa.csv") %>%
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/clothing_sa.csv"
+source <- "../../gsv_data/raw/at/clothing_sa.csv"
+
+clothing <- read_csv(source) %>%
   select(time,value) %>%
   ts_xts()
 
@@ -124,7 +135,10 @@ The category *Clothing and Shoes* includes clothing and shoe stores as well as a
 ### Home Office
 
 ```{r}
-home_office <- read_csv("https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/home_office_sa.csv") %>%
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/home_office_sa.csv"
+source <- "../../gsv_data/raw/at/home_office_sa.csv"
+
+home_office <- read_csv(source) %>%
   select(time,value) %>%
   ts_xts()
 
@@ -166,7 +180,10 @@ The category *Home Office* combine Google inquiries related to the new normal of
 ### Gardening and Home Improvement
 
 ```{r}
-gardening <- read_csv("https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/gardening_sa.csv") %>%
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/gardening_sa.csv"
+source <- "../../gsv_data/raw/at/gardening_sa.csv"
+
+gardening <- read_csv(source) %>%
   select(time,value) %>%
   ts_xts()
 
@@ -209,7 +226,10 @@ The category *Gardening and Home Improvement* includes stores selling materials 
 ### Food Delivery
 
 ```{r}
-food_delivery <- read_csv("https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/food_delivery_sa.csv") %>%
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/food_delivery_sa.csv"
+source <- "../../gsv_data/raw/at/food_delivery_sa.csv"
+
+food_delivery <- read_csv(source) %>%
   select(time,value) %>%
   ts_xts()
 
@@ -250,7 +270,10 @@ The category *Food Delivery* includes search terms related to take away and orde
 ### Cultural
 
 ```{r}
-cultural <- read_csv("https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/cultural_sa.csv") %>%
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/cultural_sa.csv"
+source <- "../../gsv_data/raw/at/cultural_sa.csv"
+
+cultural <- read_csv(source) %>%
   select(time,value) %>%
   ts_xts()
 
@@ -295,7 +318,10 @@ The category *Cultural Events* includes search terms related to concerts, theatr
 ### Travel Abroad
 
 ```{r}
-travel <- read_csv("https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/travel_sa.csv") %>%
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/travel_sa.csv"
+source <- "../../gsv_data/raw/at/travel_sa.csv"
+
+travel <- read_csv(source) %>%
   select(time,value) %>%
   ts_xts()
 
@@ -336,7 +362,10 @@ The category *Travel Abroad* includes search terms used to book flights and holi
 ### Mobility
 
 ```{r}
-mobility <- read_csv("https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/mobility_sa.csv") %>%
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/mobility_sa.csv"
+source <- "../../gsv_data/raw/at/mobility_sa.csv"
+
+mobility <- read_csv(source) %>%
   select(time,value) %>%
   ts_xts()
 
@@ -378,7 +407,10 @@ The category *Mobility* includes search terms related to ground transportation: 
 ### Watches and Jewelry
 
 ```{r}
-jewelry <- read_csv("https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/luxury_sa.csv") %>%
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/luxury_sa.csv"
+source <- "../../gsv_data/raw/at/luxury_sa.csv"
+
+jewelry <- read_csv(source) %>%
   select(time,value) %>%
   ts_xts()
 
@@ -416,3 +448,223 @@ The category *Watches and Jewellery* includes stores and brands selling luxuriou
 - feichtinger
 
 [Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/luxury_sa.csv){target="_blank"}
+
+
+<!----------------------------------------------------------------------->
+<!---------------------------------------------------- VAR PAGE --------->
+<!----------------------------------------------------------------------->
+
+
+# VAR
+
+```{r}
+library(vars)
+library(ggfortify)
+load("../../gsv_data/r_data/var.RData")
+```
+
+\[\mathbf{x_t^{AT}} = [ PES_t^{AT}, u_t^{AT}, P_t^{AT}] \]
+
+Vector Autoregressive Model with 6 lags
+
+### Results
+
+```{r, results='asis'}
+library(stargazer)
+stargazer(var6$varresult, type = "html", header = F, title = "VAR(6)",  
+          column.labels = c("pes","une","cpi"), 
+          dep.var.caption = "<p>dependent variables: pes, une, cpi</p>", 
+          dep.var.labels = c(""), 
+          covariate.labels = c("$pes_{t-1}$","<p>&#916; une<sub>t-1</sub></p>","$cpi_{t-1}$",
+                               "$pes_{t-2}$","<p>&#916; une<sub>t-2</sub></p>","$cpi_{t-2}$",
+                               "$pes_{t-3}$","<p>&#916; une<sub>t-3</sub></p>","$cpi_{t-3}$",
+                               "$pes_{t-4}$","<p>&#916; une<sub>t-4</sub></p>","$cpi_{t-4}$",
+                               "$pes_{t-5}$","<p>&#916; une<sub>t-5</sub></p>","$cpi_{t-5}$",
+                               "$pes_{t-6}$","<p>&#916; une<sub>t-6</sub></p>","$cpi_{t-6}$",
+                               "constant"))
+```
+### Summary
+
+##### Data
+
+pes - Perceived Economic Situation (Nowcasting proxy for GDP) <br>
+Dune - Unemployment rate I(2) <br>
+cpi - Inflation rate year-on-year <br>
+
+all variables are on a monthly frequency
+
+##### Model diagnostics - residuals 
+(p.value threshold = 0.05)
+
+```{r, include=F}
+serial <- serial.test(var6, lags.pt=10, type="PT.asymptotic")
+normtest <- normality.test(var6)
+print(normtest)
+arch <- arch.test(var6, lags.multi = 6, multivariate.only = T)
+print(arch)
+```
+
+
+multivariate test for serially correlated errors (Portmanteau- and Breusch-Godfrey):
+H0 of no serial correlation: `r ifelse(serial$serial$p.value > 0.05, "accepted", "rejected")` p = `r round(serial$serial$p.value,2)`
+
+multivariate Jarque-Bera tests:
+
+H0 of Normality: `r ifelse(normtest$jb.mul$JB$p.value > 0.05, "accepted", "rejected")` p = `r round(normtest$jb.mul$JB$p.value,2)`
+
+H0 of Skewness = 0: `r ifelse(normtest$jb.mul$Skewness$p.value > 0.05, "accepted", "rejected")` p = `r round(normtest$jb.mul$Skewness$p.value,2)`
+
+H0 of Kurtosis (excess curtosis = 0): `r ifelse(normtest$jb.mul$Kurtosis$p.value > 0.05, "accepted", "rejected")` p = `r round(normtest$jb.mul$Kurtosis$p.value,2)`
+
+multivariate ARCH-LM test:
+
+H0 of homoskedasticity: `r ifelse(arch$arch.mul$p.value > 0.05, "accepted", "rejected")` p = `r round(arch$arch.mul$p.value,2)`
+
+<!----------------------------------------------------------------------->
+<!---------------------------------------------------- Forecasting PAGE ->
+<!----------------------------------------------------------------------->
+
+# Forecasting
+
+## Row {.tabset .tabset-fade}
+
+### Out-of sample VAR(6) Forecasting (3M ahead)
+
+```{r}
+pred_os <- predict(var6, n.ahead = 3)
+pred_os_plot <- forecast::autoplot(pred_os)
+plotly::ggplotly(pred_os_plot)
+```
+
+
+## Row {.tabset .tabset-fade data-height=600}
+
+### In-sample Forecast (3M ahead)
+
+
+```{r}
+predplot <- forecast::autoplot(stats::predict(v, n.ahead=3)) #forecast::autoplot
+plotly::ggplotly(predplot)
+```
+
+### Accuracy
+
+###### Evaluation of in-sample forecast accuracy
+
+pes Forecast accuracy:
+
+```{r}
+knitr::kable(acc_pes, digits = 3)
+```
+
+Dune Forecast accuracy:
+
+```{r}
+knitr::kable(acc_Dune, digits = 3)
+```
+
+cpi Forecast accuracy :
+
+```{r}
+knitr::kable(acc_cpi, digits = 3)
+```
+
+### Forecast (1M ahead)
+
+```{r}
+lags <- 6
+horizon <- 1
+trainingdata <- window(pesdat, end=c(2021,6))
+testdata <- window(pesdat, start=c(2021,7))
+v <- VAR(trainingdata, type="const", p=lags)
+p <- predict(v, n.ahead=horizon)
+res <- residuals(v)
+fits <- fitted(v)
+
+for(i in 1:3)
+{
+  fc <- structure(list(mean=p$fcst[[i]][,"fcst"], x=trainingdata[,i],
+                       fitted=c(rep(NA,lags),fits[,i])),class="forecast")
+  acc_pes <- forecast::accuracy(fc,testdata[,1])
+  acc_Dune <- forecast::accuracy(fc,testdata[,2])
+  acc_cpi <- forecast::accuracy(fc,testdata[,3])
+}
+```
+
+
+```{r}
+predplot <- forecast::autoplot(stats::predict(v, n.ahead=horizon)) #forecast::autoplot
+plotly::ggplotly(predplot)
+```
+
+### Accuracy
+
+###### Evaluation of in-sample forecast accuracy
+
+pes Forecast accuracy:
+
+```{r}
+knitr::kable(acc_pes, digits = 3)
+```
+
+Dune Forecast accuracy:
+
+```{r}
+knitr::kable(acc_Dune, digits = 3)
+```
+
+cpi Forecast accuracy :
+
+```{r}
+knitr::kable(acc_cpi, digits = 3)
+```
+
+### Forecast (6M ahead)
+
+```{r}
+lags <- 6
+horizon <- 6
+trainingdata <- window(pesdat, end=c(2021,1))
+testdata <- window(pesdat, start=c(2021,2))
+v <- VAR(trainingdata, type="const", p=lags)
+p <- predict(v, n.ahead=horizon)
+res <- residuals(v)
+fits <- fitted(v)
+
+for(i in 1:3)
+{
+  fc <- structure(list(mean=p$fcst[[i]][,"fcst"], x=trainingdata[,i],
+                       fitted=c(rep(NA,lags),fits[,i])),class="forecast")
+  acc_pes <- forecast::accuracy(fc,testdata[,1])
+  acc_Dune <- forecast::accuracy(fc,testdata[,2])
+  acc_cpi <- forecast::accuracy(fc,testdata[,3])
+}
+```
+
+
+```{r}
+predplot <- forecast::autoplot(stats::predict(v, n.ahead=horizon)) #forecast::autoplot
+plotly::ggplotly(predplot)
+```
+
+### Accuracy
+
+###### Evaluation of in-sample forecast accuracy
+
+pes Forecast accuracy:
+
+```{r}
+knitr::kable(acc_pes, digits = 3)
+```
+
+Dune Forecast accuracy:
+
+```{r}
+knitr::kable(acc_Dune, digits = 3)
+```
+
+cpi Forecast accuracy :
+
+```{r}
+knitr::kable(acc_cpi, digits = 3)
+```
