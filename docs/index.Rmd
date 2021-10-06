@@ -41,7 +41,7 @@ This dashboard is based on the work of [trendEcon](https://www.trendecon.org)
 
 ```{r, eval=T}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/trendecon_sa.csv"
-source <- "../../gsv_data/raw/at/trendecon_sa.csv"
+#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
 
 economic_sentiment <- read_csv(source) %>%
   select(time,value) %>%
@@ -89,7 +89,7 @@ The indicator for *Perceived Economic Situation* includes search terms that refl
 
 ```{r}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/clothing_sa.csv"
-source <- "../../gsv_data/raw/at/clothing_sa.csv"
+#source <- "../../gsv_data/raw/at/clothing_sa.csv"
 
 clothing <- read_csv(source) %>%
   select(time,value) %>%
@@ -136,7 +136,7 @@ The category *Clothing and Shoes* includes clothing and shoe stores as well as a
 
 ```{r}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/home_office_sa.csv"
-source <- "../../gsv_data/raw/at/home_office_sa.csv"
+#source <- "../../gsv_data/raw/at/home_office_sa.csv"
 
 home_office <- read_csv(source) %>%
   select(time,value) %>%
@@ -181,7 +181,7 @@ The category *Home Office* combine Google inquiries related to the new normal of
 
 ```{r}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/gardening_sa.csv"
-source <- "../../gsv_data/raw/at/gardening_sa.csv"
+#source <- "../../gsv_data/raw/at/gardening_sa.csv"
 
 gardening <- read_csv(source) %>%
   select(time,value) %>%
@@ -227,7 +227,7 @@ The category *Gardening and Home Improvement* includes stores selling materials 
 
 ```{r}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/food_delivery_sa.csv"
-source <- "../../gsv_data/raw/at/food_delivery_sa.csv"
+#source <- "../../gsv_data/raw/at/food_delivery_sa.csv"
 
 food_delivery <- read_csv(source) %>%
   select(time,value) %>%
@@ -271,7 +271,7 @@ The category *Food Delivery* includes search terms related to take away and orde
 
 ```{r}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/cultural_sa.csv"
-source <- "../../gsv_data/raw/at/cultural_sa.csv"
+#source <- "../../gsv_data/raw/at/cultural_sa.csv"
 
 cultural <- read_csv(source) %>%
   select(time,value) %>%
@@ -319,7 +319,7 @@ The category *Cultural Events* includes search terms related to concerts, theatr
 
 ```{r}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/travel_sa.csv"
-source <- "../../gsv_data/raw/at/travel_sa.csv"
+#source <- "../../gsv_data/raw/at/travel_sa.csv"
 
 travel <- read_csv(source) %>%
   select(time,value) %>%
@@ -363,7 +363,7 @@ The category *Travel Abroad* includes search terms used to book flights and holi
 
 ```{r}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/mobility_sa.csv"
-source <- "../../gsv_data/raw/at/mobility_sa.csv"
+#source <- "../../gsv_data/raw/at/mobility_sa.csv"
 
 mobility <- read_csv(source) %>%
   select(time,value) %>%
@@ -408,7 +408,7 @@ The category *Mobility* includes search terms related to ground transportation: 
 
 ```{r}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/luxury_sa.csv"
-source <- "../../gsv_data/raw/at/luxury_sa.csv"
+#source <- "../../gsv_data/raw/at/luxury_sa.csv"
 
 jewelry <- read_csv(source) %>%
   select(time,value) %>%
