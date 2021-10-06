@@ -9,6 +9,7 @@ get_stage("install") %>%
   add_step(step_install_cran("vars")) %>%
   add_step(step_install_cran("ggfortify")) %>%
   add_step(step_install_cran("stargazer")) %>%
+  add_step(step_install_cran("forecast")) %>%
   add_step(step_install_cran("ggplot2"))
 
 
