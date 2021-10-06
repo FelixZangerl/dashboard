@@ -549,6 +549,25 @@ multivariate ARCH-LM test:
 
 H0 of homoskedasticity: `r ifelse(arch$arch.mul$p.value > 0.05, "accepted", "rejected")` p = `r round(arch$arch.mul$p.value,2)`
 
+##### Model stability - structural breaks
+
+The data lies between the confidence level boundaries and therefore indicates that there are no structural changes in the data.
+
+```{r}
+stability <- stability(var6, type = "OLS-CUSUM")
+plot(stability)
+```
+
+##### Sources
+
+PES - scraped from Google Trends using the `trendecon` r package. <br>
+unemployment - Source: [Statistik Austria](https://www.statistik.at/web_de/statistiken/index.html) <br>
+consumer price index - Source: [Statistik Austria](https://www.statistik.at/web_de/statistiken/index.html) <br>
+consumer confidence index - Source: [OeNB](https://www.oenb.at/) <br>
+gdp - Source: [OECD](data.oecd.org) <br>
+
+R-Packages: `dygraphs`, `flexdashboard`, `htmlwidgets`, `knitr`, `tsbox`, `tidyverse`, `vars`, `ggplot2`, `plotly` `ggfortify`, `stargazer`, `forecast`
+
 <!----------------------------------------------------------------------->
 <!---------------------------------------------------- Forecasting PAGE ->
 <!----------------------------------------------------------------------->
