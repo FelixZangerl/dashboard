@@ -596,7 +596,7 @@ plotly::ggplotly(predplot)
 
 ### Accuracy
 
-###### Evaluation of in-sample forecast accuracy
+###### Evaluation of in-sample forecast accuracy (3M ahead)
 
 pes Forecast accuracy:
 
@@ -646,7 +646,7 @@ plotly::ggplotly(predplot)
 
 ### Accuracy
 
-###### Evaluation of in-sample forecast accuracy
+###### Evaluation of in-sample forecast accuracy (1M ahead)
 
 pes Forecast accuracy:
 
@@ -696,7 +696,7 @@ plotly::ggplotly(predplot)
 
 ### Accuracy
 
-###### Evaluation of in-sample forecast accuracy
+###### Evaluation of in-sample forecast accuracy (6M ahead)
 
 pes Forecast accuracy:
 
@@ -714,4 +714,326 @@ cpi Forecast accuracy :
 
 ```{r}
 knitr::kable(acc_cpi, digits = 3)
+```
+
+# consumer confidence  {data-navmenu="Benchmarks"}
+
+## Row {.tabset .tabset-fade data-height=700}
+
+### In-sample Forecast consumer confidence (3M ahead)
+
+
+```{r}
+lags <- 6
+horizon <- 3
+trainingdata_cc <- window(ccdat, end=c(2021,4))
+testdata_cc <- window(ccdat, start=c(2021,5))
+v_cc <- VAR(trainingdata_cc, type="const", p=lags)
+p_cc <- predict(v_cc, n.ahead=horizon)
+res_cc <- residuals(v_cc)
+fits_cc <- fitted(v_cc)
+
+for(i in 1:3)
+{
+  fc_cc <- structure(list(mean=p_cc$fcst[[i]][,"fcst"], x=trainingdata_cc[,i],
+                       fitted=c(rep(NA,lags),fits_cc[,i])),class="forecast")
+  acc_cc_cc <- forecast::accuracy(fc_cc,testdata_cc[,1])
+  acc_Dune_cc <- forecast::accuracy(fc_cc,testdata_cc[,2])
+  acc_cpi_cc <- forecast::accuracy(fc_cc,testdata_cc[,3])
+}
+
+```
+
+```{r}
+
+predplot_cc <- forecast::autoplot(stats::predict(v_cc, n.ahead=horizon)) #forecast::autoplot
+plotly::ggplotly(predplot_cc)
+```
+
+### Accuracy
+
+###### Evaluation of in-sample forecast accuracy - consumer confidence (3M ahead)
+
+pes Forecast accuracy:
+
+```{r}
+knitr::kable(acc_cc_cc, digits = 3)
+```
+
+Dune Forecast accuracy:
+
+```{r}
+knitr::kable(acc_Dune_cc, digits = 3)
+```
+
+cpi Forecast accuracy :
+
+```{r}
+knitr::kable(acc_cpi_cc, digits = 3)
+```
+
+### Forecast (1M ahead)
+
+
+```{r}
+lags <- 6
+horizon <- 1
+trainingdata_cc <- window(ccdat, end=c(2021,6))
+testdata_cc <- window(ccdat, start=c(2021,7))
+v_cc <- VAR(trainingdata_cc, type="const", p=lags)
+p_cc <- predict(v_cc, n.ahead=horizon)
+res_cc <- residuals(v_cc)
+fits_cc <- fitted(v_cc)
+
+for(i in 1:3)
+{
+  fc_cc <- structure(list(mean=p_cc$fcst[[i]][,"fcst"], x=trainingdata_cc[,i],
+                       fitted=c(rep(NA,lags),fits_cc[,i])),class="forecast")
+  acc_cc_cc <- forecast::accuracy(fc_cc,testdata_cc[,1])
+  acc_Dune_cc <- forecast::accuracy(fc_cc,testdata_cc[,2])
+  acc_cpi_cc <- forecast::accuracy(fc_cc,testdata_cc[,3])
+}
+
+```
+
+```{r}
+
+predplot_cc <- forecast::autoplot(stats::predict(v_cc, n.ahead=horizon)) #forecast::autoplot
+plotly::ggplotly(predplot_cc)
+```
+
+### Accuracy
+
+###### Evaluation of in-sample forecast accuracy - consumer confidence (1M ahead)
+
+pes Forecast accuracy:
+
+```{r}
+knitr::kable(acc_cc_cc, digits = 3)
+```
+
+Dune Forecast accuracy:
+
+```{r}
+knitr::kable(acc_Dune_cc, digits = 3)
+```
+
+cpi Forecast accuracy :
+
+```{r}
+knitr::kable(acc_cpi_cc, digits = 3)
+```
+
+### Forecast (6M ahead)
+
+
+```{r}
+lags <- 6
+horizon <- 6
+trainingdata_cc <- window(ccdat, end=c(2021,1))
+testdata_cc <- window(ccdat, start=c(2021,2))
+v_cc <- VAR(trainingdata_cc, type="const", p=lags)
+p_cc <- predict(v_cc, n.ahead=horizon)
+res_cc <- residuals(v_cc)
+fits_cc <- fitted(v_cc)
+
+for(i in 1:3)
+{
+  fc_cc <- structure(list(mean=p_cc$fcst[[i]][,"fcst"], x=trainingdata_cc[,i],
+                       fitted=c(rep(NA,lags),fits_cc[,i])),class="forecast")
+  acc_cc_cc <- forecast::accuracy(fc_cc,testdata_cc[,1])
+  acc_Dune_cc <- forecast::accuracy(fc_cc,testdata_cc[,2])
+  acc_cpi_cc <- forecast::accuracy(fc_cc,testdata_cc[,3])
+}
+
+```
+
+```{r}
+
+predplot_cc <- forecast::autoplot(stats::predict(v_cc, n.ahead=horizon)) #forecast::autoplot
+plotly::ggplotly(predplot_cc)
+```
+
+### Accuracy
+
+###### Evaluation of in-sample forecast accuracy - consumer confidence (3M ahead)
+
+pes Forecast accuracy:
+
+```{r}
+knitr::kable(acc_cc_cc, digits = 3)
+```
+
+Dune Forecast accuracy:
+
+```{r}
+knitr::kable(acc_Dune_cc, digits = 3)
+```
+
+cpi Forecast accuracy :
+
+```{r}
+knitr::kable(acc_cpi_cc, digits = 3)
+```
+
+# crisis period {data-navmenu="Benchmarks"}
+
+## Row {.tabset .tabset-fade data-height=700}
+
+### In-sample Forecast crisis period (3M ahead)
+
+
+```{r}
+lags <- 6
+horizon <- 3
+trainingdata_cov <- window(pesdat, end=c(2020,2))
+testdata_cov <- window(pesdat, start=c(2020,3), end=c(2020,5))
+v_cov <- VAR(trainingdata_cov, type="const", p=lags)
+p_cov <- predict(v_cov, n.ahead=horizon)
+res_cov <- residuals(v_cov)
+fits_cov <- fitted(v_cov)
+
+for(i in 1:3)
+{
+  fc_cov <- structure(list(mean=p_cov$fcst[[i]][,"fcst"], x=trainingdata_cov[,i],
+                       fitted=c(rep(NA,lags),fits_cov[,i])),class="forecast")
+  acc_pes_cov <- forecast::accuracy(fc_cov,testdata_cov[,1])
+  acc_Dune_cov <- forecast::accuracy(fc_cov,testdata_cov[,2])
+  acc_cpi_cov <- forecast::accuracy(fc_cov,testdata_cov[,3])
+}
+
+```
+
+```{r}
+
+predplot_cov <- forecast::autoplot(stats::predict(v_cov, n.ahead=horizon)) #forecast::autoplot
+plotly::ggplotly(predplot_cov)
+```
+
+### Accuracy
+
+###### Evaluation of in-sample forecast accuracy - crisis period (3M ahead)
+
+pes Forecast accuracy:
+
+```{r}
+knitr::kable(acc_pes_cov, digits = 3)
+```
+
+Dune Forecast accuracy:
+
+```{r}
+knitr::kable(acc_Dune_cov, digits = 3)
+```
+
+cpi Forecast accuracy :
+
+```{r}
+knitr::kable(acc_cpi_cov, digits = 3)
+```
+
+
+### Forecast (1M ahead)
+
+
+```{r}
+lags <- 6
+horizon <- 1
+trainingdata_cov <- window(pesdat, end=c(2020,2))
+testdata_cov <- window(pesdat, start=c(2020,3), end=c(2020,3))
+v_cov <- VAR(trainingdata_cov, type="const", p=lags)
+p_cov <- predict(v_cov, n.ahead=horizon)
+res_cov <- residuals(v_cov)
+fits_cov <- fitted(v_cov)
+
+for(i in 1:3)
+{
+  fc_cov <- structure(list(mean=p_cov$fcst[[i]][,"fcst"], x=trainingdata_cov[,i],
+                       fitted=c(rep(NA,lags),fits_cov[,i])),class="forecast")
+  acc_pes_cov <- forecast::accuracy(fc_cov,testdata_cov[,1])
+  acc_Dune_cov <- forecast::accuracy(fc_cov,testdata_cov[,2])
+  acc_cpi_cov <- forecast::accuracy(fc_cov,testdata_cov[,3])
+}
+
+```
+
+```{r}
+
+predplot_cov <- forecast::autoplot(stats::predict(v_cov, n.ahead=horizon)) #forecast::autoplot
+plotly::ggplotly(predplot_cov)
+```
+
+### Accuracy
+
+###### Evaluation of in-sample forecast accuracy - crisis period (1M ahead)
+
+pes Forecast accuracy:
+
+```{r}
+knitr::kable(acc_pes_cov, digits = 3)
+```
+
+Dune Forecast accuracy:
+
+```{r}
+knitr::kable(acc_Dune_cov, digits = 3)
+```
+
+cpi Forecast accuracy :
+
+```{r}
+knitr::kable(acc_cpi_cov, digits = 3)
+```
+
+
+### Forecast (6M ahead)
+
+
+```{r}
+lags <- 6
+horizon <- 6
+trainingdata_cov <- window(pesdat, end=c(2020,2))
+testdata_cov <- window(pesdat, start=c(2020,3), end=c(2020,8))
+v_cov <- VAR(trainingdata_cov, type="const", p=lags)
+p_cov <- predict(v_cov, n.ahead=horizon)
+res_cov <- residuals(v_cov)
+fits_cov <- fitted(v_cov)
+
+for(i in 1:3)
+{
+  fc_cov <- structure(list(mean=p_cov$fcst[[i]][,"fcst"], x=trainingdata_cov[,i],
+                       fitted=c(rep(NA,lags),fits_cov[,i])),class="forecast")
+  acc_pes_cov <- forecast::accuracy(fc_cov,testdata_cov[,1])
+  acc_Dune_cov <- forecast::accuracy(fc_cov,testdata_cov[,2])
+  acc_cpi_cov <- forecast::accuracy(fc_cov,testdata_cov[,3])
+}
+
+```
+
+```{r}
+
+predplot_cov <- forecast::autoplot(stats::predict(v_cov, n.ahead=horizon)) #forecast::autoplot
+plotly::ggplotly(predplot_cov)
+```
+
+### Accuracy
+
+###### Evaluation of in-sample forecast accuracy - crisis period (6M ahead)
+
+pes Forecast accuracy:
+
+```{r}
+knitr::kable(acc_pes_cov, digits = 3)
+```
+
+Dune Forecast accuracy:
+
+```{r}
+knitr::kable(acc_Dune_cov, digits = 3)
+```
+
+cpi Forecast accuracy :
+
+```{r}
+knitr::kable(acc_cpi_cov, digits = 3)
 ```
