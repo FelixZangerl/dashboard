@@ -487,7 +487,7 @@ ts_dygraphs(ts_c(
 ```{r}
 library(vars)
 library(ggfortify)
-#load("../../gsv_data/r_data/var.RData")
+load("../../gsv_data/r_data/var.RData")
 source <- "https://github.com/FelixZangerl/gsv_data/blob/main/r_data/var.RData?raw=true"
 load(url(source))
 ```
@@ -499,7 +499,7 @@ Vector Autoregressive Model with 6 lags: \(\mathbf{x_t^{AT}} = [ PES_t^{AT}, u_t
 
 ```{r, results='asis'}
 library(stargazer)
-stargazer(var6$varresult, type = "html", header = F, title = "VAR(6)",  
+stargazer(var6$varresult, type = "html", header = F, title = "VAR(12)",  
           column.labels = c("pes","une","cpi"), 
           dep.var.caption = "<p>dependent variables: pes, une, cpi</p>", 
           dep.var.labels = c(""), 
@@ -509,6 +509,12 @@ stargazer(var6$varresult, type = "html", header = F, title = "VAR(6)",
                                "$pes_{t-4}$","<p>&#916; une<sub>t-4</sub></p>","$cpi_{t-4}$",
                                "$pes_{t-5}$","<p>&#916; une<sub>t-5</sub></p>","$cpi_{t-5}$",
                                "$pes_{t-6}$","<p>&#916; une<sub>t-6</sub></p>","$cpi_{t-6}$",
+                               "$pes_{t-7}$","<p>&#917; une<sub>t-7</sub></p>","$cpi_{t-7}$",
+                               "$pes_{t-8}$","<p>&#918; une<sub>t-8</sub></p>","$cpi_{t-8}$",
+                               "$pes_{t-9}$","<p>&#919; une<sub>t-9</sub></p>","$cpi_{t-9}$",
+                               "$pes_{t-10}$","<p>&#9110; une<sub>t-10</sub></p>","$cpi_{t-10}$",
+                               "$pes_{t-11}$","<p>&#9110; une<sub>t-11</sub></p>","$cpi_{t-11}$",
+                               "$pes_{t-12}$","<p>&#9110; une<sub>t-12</sub></p>","$cpi_{t-12}$",
                                "constant"))
 ```
 ### Summary
@@ -516,7 +522,7 @@ stargazer(var6$varresult, type = "html", header = F, title = "VAR(6)",
 ##### Data
 
 pes - Perceived Economic Situation (Nowcasting proxy for GDP) <br>
-Dune - Unemployment rate I(2) <br>
+Dune - Unemployment rate <br>
 cpi - Inflation rate year-on-year <br>
 
 all variables are on a monthly frequency
@@ -525,28 +531,38 @@ all variables are on a monthly frequency
 (p.value threshold = 0.05)
 
 ```{r, include=F}
-serial <- serial.test(var6, lags.pt=10, type="PT.asymptotic")
+lag <- 12
+serial <- serial.test(var6, lags.pt=lag*2, type="PT.asymptotic")
 normtest <- normality.test(var6)
 print(normtest)
 arch <- arch.test(var6, lags.multi = 6, multivariate.only = T)
 print(arch)
+
+ctest_e <- ca.jo(pesdat, type = "eigen", ecdet = "const", K = 15)
+ctest_t <- ca.jo(pesdat, type = "trace", ecdet = "const", K = 15)
 ```
 
 
 multivariate test for serially correlated errors (Portmanteau- and Breusch-Godfrey):
-H0 of no serial correlation: `r ifelse(serial$serial$p.value > 0.05, "accepted", "rejected")` p = `r round(serial$serial$p.value,2)`
+H0 of no serial correlation: `r ifelse(serial$serial$p.value > 0.05, "accepted", "rejected")`. p = `r round(serial$serial$p.value,2)`
 
 multivariate Jarque-Bera tests:
 
-H0 of Normality: `r ifelse(normtest$jb.mul$JB$p.value > 0.05, "accepted", "rejected")` p = `r round(normtest$jb.mul$JB$p.value,2)`
+H0 of Normality: `r ifelse(normtest$jb.mul$JB$p.value > 0.05, "accepted", "rejected")`. p = `r round(normtest$jb.mul$JB$p.value,2)`
 
-H0 of Skewness = 0: `r ifelse(normtest$jb.mul$Skewness$p.value > 0.05, "accepted", "rejected")` p = `r round(normtest$jb.mul$Skewness$p.value,2)`
+H0 of Skewness = 0: `r ifelse(normtest$jb.mul$Skewness$p.value > 0.05, "accepted", "rejected")`. p = `r round(normtest$jb.mul$Skewness$p.value,2)`
 
-H0 of Kurtosis (excess curtosis = 0): `r ifelse(normtest$jb.mul$Kurtosis$p.value > 0.05, "accepted", "rejected")` p = `r round(normtest$jb.mul$Kurtosis$p.value,2)`
+H0 of Kurtosis (excess curtosis = 0): `r ifelse(normtest$jb.mul$Kurtosis$p.value > 0.05, "accepted", "rejected")`. p = `r round(normtest$jb.mul$Kurtosis$p.value,2)`
 
 multivariate ARCH-LM test:
 
-H0 of homoskedasticity: `r ifelse(arch$arch.mul$p.value > 0.05, "accepted", "rejected")` p = `r round(arch$arch.mul$p.value,2)`
+H0 of homoskedasticity: `r ifelse(arch$arch.mul$p.value > 0.05, "accepted", "rejected")`. p = `r round(arch$arch.mul$p.value,2)`
+
+Johansen Procedure for VAR:
+
+H0 of no cointegration: rejected. Number of cointegration relationships: 2
+
+
 
 ##### Model stability - structural breaks
 
@@ -575,283 +591,108 @@ R-Packages: `dygraphs`, `flexdashboard`, `htmlwidgets`, `knitr`, `tsbox`, `tidyv
 
 ## Row {.tabset .tabset-fade}
 
-### Out-of sample VAR(6) Forecasting (3M ahead)
+### Out-of sample VECM(12) Forecasting (3M ahead)
 
 ```{r}
-pred_os <- predict(var6, n.ahead = 3)
-pred_os_plot <- forecast::autoplot(pred_os)
-plotly::ggplotly(pred_os_plot)
+forecast <- predict(vecm16var, n.ahead = 3)
+forecast::autoplot(forecast)
 ```
 
 
-## Row {.tabset .tabset-fade data-height=700}
+## Row {.tabset .tabset-fade data-height=1700}
 
-### In-sample Forecast (3M ahead)
-
-
-```{r}
-predplot <- forecast::autoplot(stats::predict(v, n.ahead=3)) #forecast::autoplot
-plotly::ggplotly(predplot)
-```
-
-### Accuracy
-
-###### Evaluation of in-sample forecast accuracy (3M ahead)
-
-pes Forecast accuracy:
-
-```{r}
-knitr::kable(acc_pes, digits = 3)
-```
-
-Dune Forecast accuracy:
-
-```{r}
-knitr::kable(acc_Dune, digits = 3)
-```
-
-cpi Forecast accuracy :
-
-```{r}
-knitr::kable(acc_cpi, digits = 3)
-```
-
-### Forecast (1M ahead)
-
-```{r}
-lags <- 6
-horizon <- 1
-trainingdata <- window(pesdat, end=c(2021,6))
-testdata <- window(pesdat, start=c(2021,7))
-v <- VAR(trainingdata, type="const", p=lags)
-p <- predict(v, n.ahead=horizon)
-res <- residuals(v)
-fits <- fitted(v)
-
-for(i in 1:3)
-{
-  fc <- structure(list(mean=p$fcst[[i]][,"fcst"], x=trainingdata[,i],
-                       fitted=c(rep(NA,lags),fits[,i])),class="forecast")
-  acc_pes <- forecast::accuracy(fc,testdata[,1])
-  acc_Dune <- forecast::accuracy(fc,testdata[,2])
-  acc_cpi <- forecast::accuracy(fc,testdata[,3])
-}
-```
+### In-sample Forecast (1M ahead, 3 rolls) - PES
 
 
 ```{r}
-predplot <- forecast::autoplot(stats::predict(v, n.ahead=horizon)) #forecast::autoplot
-plotly::ggplotly(predplot)
+library(tsDyn)
+roll <- 3
+
+predict_roll <- predict_rolling(vecm16, n.ahead = 6, nroll=roll)
+forecast_roll <- accuracy_stat(predict_roll)
 ```
+
+```{r}
+plot(window(pesdat[,"pes"]), ylab="pes")
+preds_roll_ts <- ts(predict_roll$pred, start=time(pesdat)[nrow(pesdat)-roll], freq=12)
+lines(preds_roll_ts[,"pes"], col=2, lty=2)
+legend("bottomright", lty=c(1,2), col=1:2, leg=c("True", "Fitted"))
+title("Comparison of true and rolling 1-ahead forecasts\n")
+```
+
+### In-sample Forecast (1M ahead, 3 rolls) - Unemployment
+
+```{r}
+plot(window(pesdat[,"Dune"]), ylab="Dune")
+preds_roll_ts <- ts(predict_roll$pred, start=time(pesdat)[nrow(pesdat)-roll], freq=12)
+lines(preds_roll_ts[,"Dune"], col=2, lty=2)
+legend("bottomright", lty=c(1,2), col=1:2, leg=c("True", "Fitted"))
+title("Comparison of true and rolling 1-ahead forecasts\n")
+```
+
+
+### In-sample Forecast (1M ahead, 3 rolls) - CPI
+
+```{r}
+plot(window(pesdat[,"cpi"]), ylab="cpi")
+preds_roll_ts <- ts(predict_roll$pred, start=time(pesdat)[nrow(pesdat)-roll], freq=12)
+lines(preds_roll_ts[,"cpi"], col=2, lty=2)
+legend("bottomright", lty=c(1,2), col=1:2, leg=c("True", "Fitted"))
+title("Comparison of true and rolling 1-ahead forecasts\n")
+```
+
 
 ### Accuracy
 
 ###### Evaluation of in-sample forecast accuracy (1M ahead)
 
-pes Forecast accuracy:
 
 ```{r}
-knitr::kable(acc_pes, digits = 3)
-```
-
-Dune Forecast accuracy:
-
-```{r}
-knitr::kable(acc_Dune, digits = 3)
-```
-
-cpi Forecast accuracy :
-
-```{r}
-knitr::kable(acc_cpi, digits = 3)
-```
-
-### Forecast (6M ahead)
-
-```{r}
-lags <- 6
-horizon <- 6
-trainingdata <- window(pesdat, end=c(2021,1))
-testdata <- window(pesdat, start=c(2021,2))
-v <- VAR(trainingdata, type="const", p=lags)
-p <- predict(v, n.ahead=horizon)
-res <- residuals(v)
-fits <- fitted(v)
-
-for(i in 1:3)
-{
-  fc <- structure(list(mean=p$fcst[[i]][,"fcst"], x=trainingdata[,i],
-                       fitted=c(rep(NA,lags),fits[,i])),class="forecast")
-  acc_pes <- forecast::accuracy(fc,testdata[,1])
-  acc_Dune <- forecast::accuracy(fc,testdata[,2])
-  acc_cpi <- forecast::accuracy(fc,testdata[,3])
-}
-```
-
-
-```{r}
-predplot <- forecast::autoplot(stats::predict(v, n.ahead=horizon)) #forecast::autoplot
-plotly::ggplotly(predplot)
-```
-
-### Accuracy
-
-###### Evaluation of in-sample forecast accuracy (6M ahead)
-
-pes Forecast accuracy:
-
-```{r}
-knitr::kable(acc_pes, digits = 3)
-```
-
-Dune Forecast accuracy:
-
-```{r}
-knitr::kable(acc_Dune, digits = 3)
-```
-
-cpi Forecast accuracy :
-
-```{r}
-knitr::kable(acc_cpi, digits = 3)
+knitr::kable(forecast_roll, digits = 3)
 ```
 
 # consumer confidence  {data-navmenu="Benchmarks"}
 
 ## Row {.tabset .tabset-fade data-height=700}
 
-### In-sample Forecast consumer confidence (3M ahead)
+### In-sample Forecast (1M ahead, 3 rolls) - consumer confidence
 
 
-```{r}
-lags <- 6
-horizon <- 3
-trainingdata_cc <- window(ccdat, end=c(2021,4))
-testdata_cc <- window(ccdat, start=c(2021,5))
-v_cc <- VAR(trainingdata_cc, type="const", p=lags)
-p_cc <- predict(v_cc, n.ahead=horizon)
-res_cc <- residuals(v_cc)
-fits_cc <- fitted(v_cc)
-
-for(i in 1:3)
-{
-  fc_cc <- structure(list(mean=p_cc$fcst[[i]][,"fcst"], x=trainingdata_cc[,i],
-                       fitted=c(rep(NA,lags),fits_cc[,i])),class="forecast")
-  acc_cc_cc <- forecast::accuracy(fc_cc,testdata_cc[,1])
-  acc_Dune_cc <- forecast::accuracy(fc_cc,testdata_cc[,2])
-  acc_cpi_cc <- forecast::accuracy(fc_cc,testdata_cc[,3])
-}
-
+```{r, warning=F}
+vecm16cc <- tsDyn::VECM(ccdat,  lag = lag, r = 2)
+ctest_t_cc <- ca.jo(ccdat, type = "trace", ecdet = "const", K = 15)
+vecm16var_cc <- vec2var(ctest_t, r=2)
+predict_roll_cc <- predict_rolling(vecm16cc, n.ahead = 6, nroll=roll)
+forecast_roll_cc <- accuracy_stat(predict_roll_cc)
 ```
 
 ```{r}
-
-predplot_cc <- forecast::autoplot(stats::predict(v_cc, n.ahead=horizon)) #forecast::autoplot
-plotly::ggplotly(predplot_cc)
+plot(window(ccdat[,"cc"]), ylab="cc")
+preds_roll_ts <- ts(predict_roll_cc$pred, start=time(ccdat)[nrow(ccdat)-roll], freq=12)
+lines(preds_roll_ts[,"cc"], col=2, lty=2)
+legend("bottomright", lty=c(1,2), col=1:2, leg=c("True", "Fitted"))
+title("Comparison of true and rolling 1-ahead forecasts\n")
 ```
 
-### Accuracy
-
-###### Evaluation of in-sample forecast accuracy - consumer confidence (3M ahead)
-
-consumer confidence Forecast accuracy:
+### In-sample Forecast (1M ahead, 3 rolls) - Unemplyoment
 
 ```{r}
-knitr::kable(acc_cc_cc, digits = 3)
+plot(window(ccdat[,"Dune"]), ylab="Dune")
+preds_roll_ts <- ts(predict_roll_cc$pred, start=time(ccdat)[nrow(ccdat)-roll], freq=12)
+lines(preds_roll_ts[,"Dune"], col=2, lty=2)
+legend("bottomright", lty=c(1,2), col=1:2, leg=c("True", "Fitted"))
+title("Comparison of true and rolling 1-ahead forecasts\n")
 ```
 
-Dune Forecast accuracy:
+
+### In-sample Forecast (1M ahead, 3 rolls) - CPI
 
 ```{r}
-knitr::kable(acc_Dune_cc, digits = 3)
-```
-
-cpi Forecast accuracy :
-
-```{r}
-knitr::kable(acc_cpi_cc, digits = 3)
-```
-
-### Forecast (1M ahead)
-
-
-```{r}
-lags <- 6
-horizon <- 1
-trainingdata_cc <- window(ccdat, end=c(2021,6))
-testdata_cc <- window(ccdat, start=c(2021,7))
-v_cc <- VAR(trainingdata_cc, type="const", p=lags)
-p_cc <- predict(v_cc, n.ahead=horizon)
-res_cc <- residuals(v_cc)
-fits_cc <- fitted(v_cc)
-
-for(i in 1:3)
-{
-  fc_cc <- structure(list(mean=p_cc$fcst[[i]][,"fcst"], x=trainingdata_cc[,i],
-                       fitted=c(rep(NA,lags),fits_cc[,i])),class="forecast")
-  acc_cc_cc <- forecast::accuracy(fc_cc,testdata_cc[,1])
-  acc_Dune_cc <- forecast::accuracy(fc_cc,testdata_cc[,2])
-  acc_cpi_cc <- forecast::accuracy(fc_cc,testdata_cc[,3])
-}
-
-```
-
-```{r}
-
-predplot_cc <- forecast::autoplot(stats::predict(v_cc, n.ahead=horizon)) #forecast::autoplot
-plotly::ggplotly(predplot_cc)
-```
-
-### Accuracy
-
-###### Evaluation of in-sample forecast accuracy - consumer confidence (1M ahead)
-
-consumer confidence Forecast accuracy:
-
-```{r}
-knitr::kable(acc_cc_cc, digits = 3)
-```
-
-Dune Forecast accuracy:
-
-```{r}
-knitr::kable(acc_Dune_cc, digits = 3)
-```
-
-cpi Forecast accuracy :
-
-```{r}
-knitr::kable(acc_cpi_cc, digits = 3)
-```
-
-### Forecast (6M ahead)
-
-
-```{r}
-lags <- 6
-horizon <- 6
-trainingdata_cc <- window(ccdat, end=c(2021,1))
-testdata_cc <- window(ccdat, start=c(2021,2))
-v_cc <- VAR(trainingdata_cc, type="const", p=lags)
-p_cc <- predict(v_cc, n.ahead=horizon)
-res_cc <- residuals(v_cc)
-fits_cc <- fitted(v_cc)
-
-for(i in 1:3)
-{
-  fc_cc <- structure(list(mean=p_cc$fcst[[i]][,"fcst"], x=trainingdata_cc[,i],
-                       fitted=c(rep(NA,lags),fits_cc[,i])),class="forecast")
-  acc_cc_cc <- forecast::accuracy(fc_cc,testdata_cc[,1])
-  acc_Dune_cc <- forecast::accuracy(fc_cc,testdata_cc[,2])
-  acc_cpi_cc <- forecast::accuracy(fc_cc,testdata_cc[,3])
-}
-
-```
-
-```{r}
-
-predplot_cc <- forecast::autoplot(stats::predict(v_cc, n.ahead=horizon)) #forecast::autoplot
-plotly::ggplotly(predplot_cc)
+plot(window(ccdat[,"cpi"]), ylab="cpi")
+preds_roll_ts <- ts(predict_roll_cc$pred, start=time(ccdat)[nrow(ccdat)-roll], freq=12)
+lines(preds_roll_ts[,"cpi"], col=2, lty=2)
+legend("bottomright", lty=c(1,2), col=1:2, leg=c("True", "Fitted"))
+title("Comparison of true and rolling 1-ahead forecasts\n")
 ```
 
 ### Accuracy
@@ -861,179 +702,61 @@ plotly::ggplotly(predplot_cc)
 consumer confidence Forecast accuracy:
 
 ```{r}
-knitr::kable(acc_cc_cc, digits = 3)
+knitr::kable(forecast_roll_cc, digits = 3)
 ```
 
-Dune Forecast accuracy:
-
-```{r}
-knitr::kable(acc_Dune_cc, digits = 3)
-```
-
-cpi Forecast accuracy :
-
-```{r}
-knitr::kable(acc_cpi_cc, digits = 3)
-```
-
-# crisis period {data-navmenu="Benchmarks"}
+# crisis period  {data-navmenu="Benchmarks"}
 
 ## Row {.tabset .tabset-fade data-height=700}
 
-### In-sample Forecast crisis period (3M ahead)
+### In-sample Forecast (1M ahead, 3 rolls) - PES
 
 
-```{r}
-lags <- 6
-horizon <- 3
-trainingdata_cov <- window(pesdat, end=c(2020,2))
-testdata_cov <- window(pesdat, start=c(2020,3), end=c(2020,5))
-v_cov <- VAR(trainingdata_cov, type="const", p=lags)
-p_cov <- predict(v_cov, n.ahead=horizon)
-res_cov <- residuals(v_cov)
-fits_cov <- fitted(v_cov)
-
-for(i in 1:3)
-{
-  fc_cov <- structure(list(mean=p_cov$fcst[[i]][,"fcst"], x=trainingdata_cov[,i],
-                       fitted=c(rep(NA,lags),fits_cov[,i])),class="forecast")
-  acc_pes_cov <- forecast::accuracy(fc_cov,testdata_cov[,1])
-  acc_Dune_cov <- forecast::accuracy(fc_cov,testdata_cov[,2])
-  acc_cpi_cov <- forecast::accuracy(fc_cov,testdata_cov[,3])
-}
-
+```{r, warning=F}
+pesdat_cov <- window(pesdat, end = c(2020,3))
+vecm16cov <- tsDyn::VECM(pesdat_cov,  lag = lag, r = 2)
+ctest_t_cov <- ca.jo(pesdat_cov, type = "trace", ecdet = "const", K = 15)
+vecm16var_cov <- vec2var(ctest_t, r=2)
+predict_roll_cov <- predict_rolling(vecm16cov, n.ahead = 6, nroll=roll)
+forecast_roll_cov <- accuracy_stat(predict_roll_cov)
 ```
 
 ```{r}
-
-predplot_cov <- forecast::autoplot(stats::predict(v_cov, n.ahead=horizon)) #forecast::autoplot
-plotly::ggplotly(predplot_cov)
+plot(window(pesdat_cov[,"pes"]), ylab="pes")
+preds_roll_ts <- ts(predict_roll_cov$pred, start=time(pesdat_cov)[nrow(pesdat_cov)-roll], freq=12)
+lines(preds_roll_ts[,"pes"], col=2, lty=2)
+legend("bottomright", lty=c(1,2), col=1:2, leg=c("True", "Fitted"))
+title("Comparison of true and rolling 1-ahead forecasts\n")
 ```
 
-### Accuracy
-
-###### Evaluation of in-sample forecast accuracy - crisis period (3M ahead)
-
-pes Forecast accuracy:
+### In-sample Forecast (1M ahead, 3 rolls) - Unemplyoment
 
 ```{r}
-knitr::kable(acc_pes_cov, digits = 3)
-```
-
-Dune Forecast accuracy:
-
-```{r}
-knitr::kable(acc_Dune_cov, digits = 3)
-```
-
-cpi Forecast accuracy :
-
-```{r}
-knitr::kable(acc_cpi_cov, digits = 3)
+plot(window(pesdat_cov[,"Dune"]), ylab="Dune")
+preds_roll_ts <- ts(predict_roll_cov$pred, start=time(pesdat_cov)[nrow(pesdat_cov)-roll], freq=12)
+lines(preds_roll_ts[,"Dune"], col=2, lty=2)
+legend("bottomright", lty=c(1,2), col=1:2, leg=c("True", "Fitted"))
+title("Comparison of true and rolling 1-ahead forecasts\n")
 ```
 
 
-### Forecast (1M ahead)
-
-
-```{r}
-lags <- 6
-horizon <- 1
-trainingdata_cov <- window(pesdat, end=c(2020,2))
-testdata_cov <- window(pesdat, start=c(2020,3), end=c(2020,3))
-v_cov <- VAR(trainingdata_cov, type="const", p=lags)
-p_cov <- predict(v_cov, n.ahead=horizon)
-res_cov <- residuals(v_cov)
-fits_cov <- fitted(v_cov)
-
-for(i in 1:3)
-{
-  fc_cov <- structure(list(mean=p_cov$fcst[[i]][,"fcst"], x=trainingdata_cov[,i],
-                       fitted=c(rep(NA,lags),fits_cov[,i])),class="forecast")
-  acc_pes_cov <- forecast::accuracy(fc_cov,testdata_cov[,1])
-  acc_Dune_cov <- forecast::accuracy(fc_cov,testdata_cov[,2])
-  acc_cpi_cov <- forecast::accuracy(fc_cov,testdata_cov[,3])
-}
-
-```
+### In-sample Forecast (1M ahead, 3 rolls) - CPI
 
 ```{r}
-
-predplot_cov <- forecast::autoplot(stats::predict(v_cov, n.ahead=horizon)) #forecast::autoplot
-plotly::ggplotly(predplot_cov)
+plot(window(pesdat_cov[,"cpi"]), ylab="cpi")
+preds_roll_ts <- ts(predict_roll_cov$pred, start=time(pesdat_cov)[nrow(pesdat_cov)-roll], freq=12)
+lines(preds_roll_ts[,"cpi"], col=2, lty=2)
+legend("bottomright", lty=c(1,2), col=1:2, leg=c("True", "Fitted"))
+title("Comparison of true and rolling 1-ahead forecasts\n")
 ```
 
 ### Accuracy
 
-###### Evaluation of in-sample forecast accuracy - crisis period (1M ahead)
+###### Evaluation of in-sample forecast accuracy - consumer confidence (3M ahead)
 
-pes Forecast accuracy:
-
-```{r}
-knitr::kable(acc_pes_cov, digits = 3)
-```
-
-Dune Forecast accuracy:
+consumer confidence Forecast accuracy:
 
 ```{r}
-knitr::kable(acc_Dune_cov, digits = 3)
+knitr::kable(forecast_roll_cov, digits = 3)
 ```
 
-cpi Forecast accuracy :
-
-```{r}
-knitr::kable(acc_cpi_cov, digits = 3)
-```
-
-
-### Forecast (6M ahead)
-
-
-```{r}
-lags <- 6
-horizon <- 6
-trainingdata_cov <- window(pesdat, end=c(2020,2))
-testdata_cov <- window(pesdat, start=c(2020,3), end=c(2020,8))
-v_cov <- VAR(trainingdata_cov, type="const", p=lags)
-p_cov <- predict(v_cov, n.ahead=horizon)
-res_cov <- residuals(v_cov)
-fits_cov <- fitted(v_cov)
-
-for(i in 1:3)
-{
-  fc_cov <- structure(list(mean=p_cov$fcst[[i]][,"fcst"], x=trainingdata_cov[,i],
-                       fitted=c(rep(NA,lags),fits_cov[,i])),class="forecast")
-  acc_pes_cov <- forecast::accuracy(fc_cov,testdata_cov[,1])
-  acc_Dune_cov <- forecast::accuracy(fc_cov,testdata_cov[,2])
-  acc_cpi_cov <- forecast::accuracy(fc_cov,testdata_cov[,3])
-}
-
-```
-
-```{r}
-
-predplot_cov <- forecast::autoplot(stats::predict(v_cov, n.ahead=horizon)) #forecast::autoplot
-plotly::ggplotly(predplot_cov)
-```
-
-### Accuracy
-
-###### Evaluation of in-sample forecast accuracy - crisis period (6M ahead)
-
-pes Forecast accuracy:
-
-```{r}
-knitr::kable(acc_pes_cov, digits = 3)
-```
-
-Dune Forecast accuracy:
-
-```{r}
-knitr::kable(acc_Dune_cov, digits = 3)
-```
-
-cpi Forecast accuracy :
-
-```{r}
-knitr::kable(acc_cpi_cov, digits = 3)
-```
