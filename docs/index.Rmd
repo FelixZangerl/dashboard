@@ -754,7 +754,7 @@ plotly::ggplotly(predplot_cc)
 
 ###### Evaluation of in-sample forecast accuracy - consumer confidence (3M ahead)
 
-pes Forecast accuracy:
+consumer confidence Forecast accuracy:
 
 ```{r}
 knitr::kable(acc_cc_cc, digits = 3)
@@ -806,7 +806,7 @@ plotly::ggplotly(predplot_cc)
 
 ###### Evaluation of in-sample forecast accuracy - consumer confidence (1M ahead)
 
-pes Forecast accuracy:
+consumer confidence Forecast accuracy:
 
 ```{r}
 knitr::kable(acc_cc_cc, digits = 3)
@@ -858,7 +858,7 @@ plotly::ggplotly(predplot_cc)
 
 ###### Evaluation of in-sample forecast accuracy - consumer confidence (3M ahead)
 
-pes Forecast accuracy:
+consumer confidence Forecast accuracy:
 
 ```{r}
 knitr::kable(acc_cc_cc, digits = 3)
