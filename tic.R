@@ -4,6 +4,7 @@ get_stage("install") %>%
   add_step(step_install_cran("htmlwidgets")) %>%
   add_step(step_install_cran("knitr")) %>%
   add_step(step_install_cran("tsbox"))%>%
+  #add_step(step_install_cran("xts"))%>%
   add_step(step_install_cran("readr"))%>%
   add_step(step_install_cran("dplyr")) %>%
   add_step(step_install_cran("vars")) %>%
@@ -11,7 +12,8 @@ get_stage("install") %>%
   add_step(step_install_cran("stargazer")) %>%
   add_step(step_install_cran("forecast")) %>%
   add_step(step_install_cran("plotly")) %>%
-  add_step(step_install_cran("ggplot2"))
+  add_step(step_install_cran("ggplot2")) %>%
+  add_step(step_install_cran("tsDyn"))  
 
 
 get_stage("before_deploy") %>%
