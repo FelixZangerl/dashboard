@@ -494,7 +494,7 @@ load(url(source))
 
 ### Results
 
-Vector Autoregressive Model with 6 lags: \(\mathbf{x_t^{AT}} = [ PES_t^{AT}, u_t^{AT}, P_t^{AT}] \)
+Vector Autoregressive Model with 12 lags: \(\mathbf{x_t^{AT}} = [ PES_t^{AT}, u_t^{AT}, P_t^{AT}] \)
 
 
 ```{r, results='asis'}
