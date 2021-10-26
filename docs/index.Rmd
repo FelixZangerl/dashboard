@@ -23,6 +23,7 @@ library(readr)
 library(tsbox)
 library(xts)
 library(dplyr)
+library(tidyr)
 library(knitr)
 library(ggplot2)
 
@@ -54,7 +55,7 @@ dygraph(economic_sentiment,group = "keywords")%>%
     dyEvent("2020-3-16", "Lockdown #1", labelLoc = "bottom")%>%
     dyEvent("2020-5-1", "End of Lockdown #1", labelLoc = "bottom")%>%
     dyEvent("2020-9-14", "Mandatory wearing of masks", labelLoc = "bottom")%>%
-    dyEvent("2020-9-21", "Lockdown 'light'", labelLoc = "bottom")%>%
+    dyEvent("2020-11-3", "Lockdown 'light'", labelLoc = "bottom")%>%
     dyEvent("2020-11-17", "Lockdown #2", labelLoc = "bottom")%>%
     dyEvent("2020-12-6", "End of Lockdown #2", labelLoc = "bottom")%>%
     dyEvent("2020-12-26", "Lockdown #3", labelLoc = "bottom")%>%
@@ -601,14 +602,14 @@ forecast::autoplot(forecast)
 
 ## Row {.tabset .tabset-fade data-height=1700}
 
-### In-sample Forecast (1M ahead, 3 rolls) - PES
+### In-sample Forecast (3M ahead, 3 rolls) - PES
 
 
 ```{r}
 library(tsDyn)
 roll <- 3
 
-predict_roll <- predict_rolling(vecm16, n.ahead = 6, nroll=roll)
+predict_roll <- predict_rolling(vecm16, n.ahead = 3, nroll=roll)
 forecast_roll <- accuracy_stat(predict_roll)
 ```
 
@@ -617,10 +618,10 @@ plot(window(pesdat[,"pes"]), ylab="pes")
 preds_roll_ts <- ts(predict_roll$pred, start=time(pesdat)[nrow(pesdat)-roll], freq=12)
 lines(preds_roll_ts[,"pes"], col=2, lty=2)
 legend("bottomright", lty=c(1,2), col=1:2, leg=c("True", "Fitted"))
-title("Comparison of true and rolling 1-ahead forecasts\n")
+title("Comparison of true and rolling 3-ahead forecasts\n")
 ```
 
-### In-sample Forecast (1M ahead, 3 rolls) - Unemployment
+### In-sample Forecast (3M ahead, 3 rolls) - Unemployment
 
 ```{r}
 plot(window(pesdat[,"Dune"]), ylab="Dune")
@@ -631,7 +632,7 @@ title("Comparison of true and rolling 1-ahead forecasts\n")
 ```
 
 
-### In-sample Forecast (1M ahead, 3 rolls) - CPI
+### In-sample Forecast (3M ahead, 3 rolls) - CPI
 
 ```{r}
 plot(window(pesdat[,"cpi"]), ylab="cpi")
@@ -655,7 +656,7 @@ knitr::kable(forecast_roll, digits = 3)
 
 ## Row {.tabset .tabset-fade data-height=700}
 
-### In-sample Forecast (1M ahead, 3 rolls) - consumer confidence
+### In-sample Forecast (3M ahead, 3 rolls) - consumer confidence
 
 
 ```{r, warning=F}
@@ -674,7 +675,7 @@ legend("bottomright", lty=c(1,2), col=1:2, leg=c("True", "Fitted"))
 title("Comparison of true and rolling 1-ahead forecasts\n")
 ```
 
-### In-sample Forecast (1M ahead, 3 rolls) - Unemplyoment
+### In-sample Forecast (3M ahead, 3 rolls) - Unemplyoment
 
 ```{r}
 plot(window(ccdat[,"Dune"]), ylab="Dune")
@@ -685,7 +686,7 @@ title("Comparison of true and rolling 1-ahead forecasts\n")
 ```
 
 
-### In-sample Forecast (1M ahead, 3 rolls) - CPI
+### In-sample Forecast (3M ahead, 3 rolls) - CPI
 
 ```{r}
 plot(window(ccdat[,"cpi"]), ylab="cpi")
@@ -709,7 +710,7 @@ knitr::kable(forecast_roll_cc, digits = 3)
 
 ## Row {.tabset .tabset-fade data-height=700}
 
-### In-sample Forecast (1M ahead, 3 rolls) - PES
+### In-sample Forecast (3M ahead, 3 rolls) - PES
 
 
 ```{r, warning=F}
@@ -729,7 +730,7 @@ legend("bottomright", lty=c(1,2), col=1:2, leg=c("True", "Fitted"))
 title("Comparison of true and rolling 1-ahead forecasts\n")
 ```
 
-### In-sample Forecast (1M ahead, 3 rolls) - Unemplyoment
+### In-sample Forecast (3 ahead, 3 rolls) - Unemplyoment
 
 ```{r}
 plot(window(pesdat_cov[,"Dune"]), ylab="Dune")
@@ -740,7 +741,7 @@ title("Comparison of true and rolling 1-ahead forecasts\n")
 ```
 
 
-### In-sample Forecast (1M ahead, 3 rolls) - CPI
+### In-sample Forecast (3M ahead, 3 rolls) - CPI
 
 ```{r}
 plot(window(pesdat_cov[,"cpi"]), ylab="cpi")
@@ -758,5 +759,36 @@ consumer confidence Forecast accuracy:
 
 ```{r}
 knitr::kable(forecast_roll_cov, digits = 3)
+```
+
+# comparison  {data-navmenu="Benchmarks"}
+
+## Row {.tabset .tabset-fade data-height=700}
+
+### Benchmark models (3M ahead, 3 rolls)
+
+
+```{r}
+forecast_roll$model <- "PES"
+forecast_roll_cc$model <- "CC"
+forecast_roll_cov$model <- "COV19 Crisis"
+
+forecast_roll_cc$var[forecast_roll_cc$var=="cc"] <- "pes"
+
+accs <- rbind(forecast_roll, forecast_roll_cc, forecast_roll_bef, forecast_roll_cov, forecast_rw, forecast_ar1)
+accs <- accs %>% dplyr::select(var, model, RMSE)
+
+accs$model <- factor(accs$model, levels = c("PES","CC","Before COV19","COV19 Crisis", "Random Walk", "AR(1)"))
+
+library(ggsci)
+ggplot(accs, aes(x=var, y=RMSE, fill=model)) +
+  geom_col(position = "dodge")+
+  geom_text(aes(label = round(RMSE,2)),
+            position = position_dodge(0.9),
+            vjust = -.3,
+            size = 3)+
+  scale_fill_startrek(palette = c("uniform"), alpha = 1)+
+  theme_minimal()+
+  theme(axis.title.x = element_blank())
 ```
 
