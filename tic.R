@@ -13,6 +13,7 @@ get_stage("install") %>%
   add_step(step_install_cran("forecast")) %>%
   add_step(step_install_cran("plotly")) %>%
   add_step(step_install_cran("ggplot2")) %>%
+  add_step(step_install_cran("ggsci")) %>%
   add_step(step_install_cran("tsDyn"))  
 
 
