@@ -523,7 +523,7 @@ load(url(source))
 
 ### Results
 
-Vector Autoregressive Model with 12 lags: \(\mathbf{x_t^{AT}} = [ PES_t^{AT}, u_t^{AT}, P_t^{AT}] \)
+Vector Autoregressive Model with 12 lags: \(\mathbf{x_t^{AT}} = [ PES_t^{AT}, u_t^{AT}, cpi_t^{AT}] \)
 
 
 ```{r, results='asis'}
@@ -551,7 +551,7 @@ stargazer(var6$varresult, type = "html", header = F, title = "VAR(12)",
 ##### Data
 
 pes - Perceived Economic Situation (Nowcasting proxy for GDP) <br>
-Dune - Unemployment rate <br>
+une - Unemployment rate <br>
 cpi - Inflation rate year-on-year <br>
 
 all variables are on a monthly frequency
