@@ -614,203 +614,39 @@ R-Packages: `dygraphs`, `flexdashboard`, `htmlwidgets`, `knitr`, `tsbox`, `tidyv
 
 ## Row {.tabset .tabset-fade}
 
-### Out-of sample VECM(12) Forecasting (3M ahead)
+### In sample VAR(12) Forecasting (3M ahead)
 
 ```{r}
-forecast <- predict(vecm16var, n.ahead = 3)
-forecast::autoplot(forecast)
+horizon <- 3
+forecast::autoplot(stats::predict(var6, n.ahead=horizon))
 ```
 
 
 ## Row {.tabset .tabset-fade data-height=1700}
 
-### In-sample Forecast (3M ahead, 3 rolls) - PES
-
-
-```{r}
-library(tsDyn)
-roll <- 3
-
-predict_roll <- predict_rolling(vecm16, n.ahead = 3, nroll=roll)
-forecast_roll <- accuracy_stat(predict_roll)
-```
-
-```{r}
-plot(window(pesdat[,"pes"]), ylab="pes")
-preds_roll_ts <- ts(predict_roll$pred, start=time(pesdat)[nrow(pesdat)-roll], freq=12)
-lines(preds_roll_ts[,"pes"], col=2, lty=2)
-legend("bottomright", lty=c(1,2), col=1:2, leg=c("True", "Fitted"))
-title("Comparison of true and rolling 3-ahead forecasts\n")
-```
-
-### In-sample Forecast (3M ahead, 3 rolls) - Unemployment
-
-```{r}
-plot(window(pesdat[,"Dune"]), ylab="Dune")
-preds_roll_ts <- ts(predict_roll$pred, start=time(pesdat)[nrow(pesdat)-roll], freq=12)
-lines(preds_roll_ts[,"Dune"], col=2, lty=2)
-legend("bottomright", lty=c(1,2), col=1:2, leg=c("True", "Fitted"))
-title("Comparison of true and rolling 1-ahead forecasts\n")
-```
-
-
-### In-sample Forecast (3M ahead, 3 rolls) - CPI
-
-```{r}
-plot(window(pesdat[,"cpi"]), ylab="cpi")
-preds_roll_ts <- ts(predict_roll$pred, start=time(pesdat)[nrow(pesdat)-roll], freq=12)
-lines(preds_roll_ts[,"cpi"], col=2, lty=2)
-legend("bottomright", lty=c(1,2), col=1:2, leg=c("True", "Fitted"))
-title("Comparison of true and rolling 1-ahead forecasts\n")
-```
-
 
 ### Accuracy
 
-###### Evaluation of in-sample forecast accuracy (1M ahead)
+###### Evaluation of in-sample forecast accuracy (3M ahead)
 
 
-```{r}
-knitr::kable(forecast_roll, digits = 3)
-```
-
-# consumer confidence  {data-navmenu="Benchmarks"}
-
-## Row {.tabset .tabset-fade data-height=700}
-
-### In-sample Forecast (3M ahead, 3 rolls) - consumer confidence
-
-
-```{r, warning=F}
-vecm16cc <- tsDyn::VECM(ccdat,  lag = lag, r = 2)
-ctest_t_cc <- ca.jo(ccdat, type = "trace", ecdet = "const", K = 15)
-vecm16var_cc <- vec2var(ctest_t, r=2)
-predict_roll_cc <- predict_rolling(vecm16cc, n.ahead = 6, nroll=roll)
-forecast_roll_cc <- accuracy_stat(predict_roll_cc)
+```{r, results='asis', include=F}
+print(xtable::xtable(accs_main, label = "tab:acc", caption = "3-month ahead rolling in-sample forecast. Displayed here are several accuracy measures for the PES forecasting model."),  include.rownames = FALSE, type="html")
 ```
 
 ```{r}
-plot(window(ccdat[,"cc"]), ylab="cc")
-preds_roll_ts <- ts(predict_roll_cc$pred, start=time(ccdat)[nrow(ccdat)-roll], freq=12)
-lines(preds_roll_ts[,"cc"], col=2, lty=2)
-legend("bottomright", lty=c(1,2), col=1:2, leg=c("True", "Fitted"))
-title("Comparison of true and rolling 1-ahead forecasts\n")
-```
-
-### In-sample Forecast (3M ahead, 3 rolls) - Unemplyoment
-
-```{r}
-plot(window(ccdat[,"Dune"]), ylab="Dune")
-preds_roll_ts <- ts(predict_roll_cc$pred, start=time(ccdat)[nrow(ccdat)-roll], freq=12)
-lines(preds_roll_ts[,"Dune"], col=2, lty=2)
-legend("bottomright", lty=c(1,2), col=1:2, leg=c("True", "Fitted"))
-title("Comparison of true and rolling 1-ahead forecasts\n")
+knitr::kable(accs_main, digits=3)
 ```
 
 
-### In-sample Forecast (3M ahead, 3 rolls) - CPI
+# Benchmarks
 
-```{r}
-plot(window(ccdat[,"cpi"]), ylab="cpi")
-preds_roll_ts <- ts(predict_roll_cc$pred, start=time(ccdat)[nrow(ccdat)-roll], freq=12)
-lines(preds_roll_ts[,"cpi"], col=2, lty=2)
-legend("bottomright", lty=c(1,2), col=1:2, leg=c("True", "Fitted"))
-title("Comparison of true and rolling 1-ahead forecasts\n")
-```
+## Row {.tabset .tabset-fade}
 
-### Accuracy
-
-###### Evaluation of in-sample forecast accuracy - consumer confidence (3M ahead)
-
-consumer confidence Forecast accuracy:
-
-```{r}
-knitr::kable(forecast_roll_cc, digits = 3)
-```
-
-# crisis period  {data-navmenu="Benchmarks"}
-
-## Row {.tabset .tabset-fade data-height=700}
-
-### In-sample Forecast (3M ahead, 3 rolls) - PES
-
-
-```{r, warning=F}
-pesdat_cov <- window(pesdat, end = c(2020,3))
-vecm16cov <- tsDyn::VECM(pesdat_cov,  lag = lag, r = 2)
-ctest_t_cov <- ca.jo(pesdat_cov, type = "trace", ecdet = "const", K = 15)
-vecm16var_cov <- vec2var(ctest_t, r=2)
-predict_roll_cov <- predict_rolling(vecm16cov, n.ahead = 6, nroll=roll)
-forecast_roll_cov <- accuracy_stat(predict_roll_cov)
-```
-
-```{r}
-plot(window(pesdat_cov[,"pes"]), ylab="pes")
-preds_roll_ts <- ts(predict_roll_cov$pred, start=time(pesdat_cov)[nrow(pesdat_cov)-roll], freq=12)
-lines(preds_roll_ts[,"pes"], col=2, lty=2)
-legend("bottomright", lty=c(1,2), col=1:2, leg=c("True", "Fitted"))
-title("Comparison of true and rolling 1-ahead forecasts\n")
-```
-
-### In-sample Forecast (3 ahead, 3 rolls) - Unemplyoment
-
-```{r}
-plot(window(pesdat_cov[,"Dune"]), ylab="Dune")
-preds_roll_ts <- ts(predict_roll_cov$pred, start=time(pesdat_cov)[nrow(pesdat_cov)-roll], freq=12)
-lines(preds_roll_ts[,"Dune"], col=2, lty=2)
-legend("bottomright", lty=c(1,2), col=1:2, leg=c("True", "Fitted"))
-title("Comparison of true and rolling 1-ahead forecasts\n")
-```
-
-
-### In-sample Forecast (3M ahead, 3 rolls) - CPI
-
-```{r}
-plot(window(pesdat_cov[,"cpi"]), ylab="cpi")
-preds_roll_ts <- ts(predict_roll_cov$pred, start=time(pesdat_cov)[nrow(pesdat_cov)-roll], freq=12)
-lines(preds_roll_ts[,"cpi"], col=2, lty=2)
-legend("bottomright", lty=c(1,2), col=1:2, leg=c("True", "Fitted"))
-title("Comparison of true and rolling 1-ahead forecasts\n")
-```
-
-### Accuracy
-
-###### Evaluation of in-sample forecast accuracy - consumer confidence (3M ahead)
-
-consumer confidence Forecast accuracy:
-
-```{r}
-knitr::kable(forecast_roll_cov, digits = 3)
-```
-
-# comparison  {data-navmenu="Benchmarks"}
-
-## Row {.tabset .tabset-fade data-height=700}
-
-### Benchmark models (3M ahead, 3 rolls)
+### Benchmark models (3M ahead)
 
 
 ```{r}
-forecast_roll$model <- "PES"
-forecast_roll_cc$model <- "CC"
-forecast_roll_cov$model <- "COV19 Crisis"
-
-forecast_roll_cc$var[forecast_roll_cc$var=="cc"] <- "pes"
-
-accs <- rbind(forecast_roll, forecast_roll_cc, forecast_roll_bef, forecast_roll_cov, forecast_rw, forecast_ar1)
-accs <- accs %>% dplyr::select(var, model, RMSE)
-
-accs$model <- factor(accs$model, levels = c("PES","CC","Before COV19","COV19 Crisis", "Random Walk", "AR(1)"))
-
-library(ggsci)
-ggplot(accs, aes(x=var, y=RMSE, fill=model)) +
-  geom_col(position = "dodge")+
-  geom_text(aes(label = round(RMSE,2)),
-            position = position_dodge(0.9),
-            vjust = -.3,
-            size = 3)+
-  scale_fill_startrek(palette = c("uniform"), alpha = 1)+
-  theme_minimal()+
-  theme(axis.title.x = element_blank())
+g2
 ```
 
