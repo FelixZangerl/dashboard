@@ -567,8 +567,8 @@ print(normtest)
 arch <- arch.test(var6, lags.multi = 6, multivariate.only = T)
 print(arch)
 
-ctest_e <- ca.jo(pesdat, type = "eigen", ecdet = "const", K = 15)
-ctest_t <- ca.jo(pesdat, type = "trace", ecdet = "const", K = 15)
+#ctest_e <- ca.jo(pesdat, type = "eigen", ecdet = "const", K = 15)
+#ctest_t <- ca.jo(pesdat, type = "trace", ecdet = "const", K = 15)
 ```
 
 
@@ -586,12 +586,6 @@ H0 of Kurtosis (excess curtosis = 0): `r ifelse(normtest$jb.mul$Kurtosis$p.value
 multivariate ARCH-LM test:
 
 H0 of homoskedasticity: `r ifelse(arch$arch.mul$p.value > 0.05, "accepted", "rejected")`. p = `r round(arch$arch.mul$p.value,2)`
-
-Johansen Procedure for VAR:
-
-H0 of no cointegration: rejected. Number of cointegration relationships: 2
-
-
 
 ##### Model stability - structural breaks
 
