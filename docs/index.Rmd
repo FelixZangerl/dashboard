@@ -505,6 +505,26 @@ ts_dygraphs(ts_c(
   dyOptions(useDataTimezone = TRUE)
 ```
 
+# Weekly Indicators
+
+### {data-height=800} 
+
+```{r}
+ts_dygraphs(ts_c(
+  `Perceived Economic Situation` = pes_w * 5,
+  `WIFO WWWI` = wwwi,
+  #`OECD Weekly Tracker` = oecd_w,
+  `OENB Weekly Indicator` = wecon_oenb
+))  %>%
+  dySeries("Perceived Economic Situation", strokeWidth=3) %>%
+  dySeries("WIFO WWWI", strokeWidth = 3) %>%
+ # dySeries("OECD Weekly Tracker", strokeWidth = 3) %>%
+  dySeries("OENB Weekly Indicator", strokeWidth = 3) %>%
+  dyAxis("x", drawGrid = FALSE) %>%
+    dyRangeSelector(dateWindow = c(as.Date("2020-01-01"), Sys.Date()))%>%
+  dyOptions(useDataTimezone = TRUE)
+```
+
 
 <!----------------------------------------------------------------------->
 <!---------------------------------------------------- VAR PAGE --------->
