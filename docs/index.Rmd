@@ -487,7 +487,7 @@ The category *Watches and Jewellery* includes stores and brands selling luxuriou
 [Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/luxury_sa.csv){target="_blank"}
 
 <!----------------------------------------------------------------------->
-<!---------------------------------------------------- PES PAGE --------->
+<!---------------------------------------------------- moment PAGE --------->
 <!----------------------------------------------------------------------->
 
 # moment
@@ -572,6 +572,168 @@ The indicator for
 
 [Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/ski.csv){target="_blank"}
 
+## Row {.tabset .tabset-fade}
+
+### stationärer Handel
+
+```{r, eval=T}
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/handel_offline.csv"
+#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
+
+handel_offline <- read_csv(source) %>%
+ # select(time,value) %>%
+  ts_xts()
+
+dygraph(handel_offline, group = "keywords")%>%
+  dyAxis("x", drawGrid = FALSE)%>%
+  dySeries("PC1", label = "Index")%>%
+  dyEvent("2021-6-10", "Easing measures - less social distancing", labelLoc = "bottom")%>%
+  dyEvent("2021-7-01", "Easing measures - night gastronomy", labelLoc = "bottom")%>%
+  dyEvent("2021-11-22", "Lockdown #4", labelLoc = "bottom")%>%
+  dyEvent("2021-12-12", "End of Lockdown #4", labelLoc = "bottom")%>%
+  dyRangeSelector(dateWindow = c("2021-10-01", today))%>%
+  dyOptions(useDataTimezone = TRUE)
+```
+
+
+### Info
+
+###### Description
+
+The indicator for 
+
+###### Keywords
+
+- Shopping Center
+- SCS
+- SCN
+- EKZ
+- Geschäft
+
+
+[Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/handel_offline.csv){target="_blank"}
+
+## Row {.tabset .tabset-fade}
+
+### Gastronomie
+
+```{r, eval=T}
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/gastro.csv"
+#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
+
+gastro <- read_csv(source) %>%
+ # select(time,value) %>%
+  ts_xts()
+
+dygraph(gastro, group = "keywords")%>%
+  dyAxis("x", drawGrid = FALSE)%>%
+  dySeries("PC1", label = "Index")%>%
+  dyEvent("2021-6-10", "Easing measures - less social distancing", labelLoc = "bottom")%>%
+  dyEvent("2021-7-01", "Easing measures - night gastronomy", labelLoc = "bottom")%>%
+  dyEvent("2021-11-22", "Lockdown #4", labelLoc = "bottom")%>%
+  dyEvent("2021-12-12", "End of Lockdown #4", labelLoc = "bottom")%>%
+  dyRangeSelector(dateWindow = c("2021-10-01", today))%>%
+  dyOptions(useDataTimezone = TRUE)
+```
+
+
+### Info
+
+###### Description
+
+The indicator for 
+
+###### Keywords
+
+- Oeffnungszeiten
+- Bar
+- Restaurant
+- Mittagsmenu
+- Speisekarte
+
+[Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/ski.csv){target="_blank"}
+
+## Row {.tabset .tabset-fade}
+
+### Elektronik
+
+```{r, eval=T}
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/elektro.csv"
+#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
+
+elektro <- read_csv(source) %>%
+ # select(time,value) %>%
+  ts_xts()
+
+dygraph(elektro, group = "keywords")%>%
+  dyAxis("x", drawGrid = FALSE)%>%
+  dySeries("PC1", label = "Index")%>%
+  dyEvent("2021-6-10", "Easing measures - less social distancing", labelLoc = "bottom")%>%
+  dyEvent("2021-7-01", "Easing measures - night gastronomy", labelLoc = "bottom")%>%
+  dyEvent("2021-11-22", "Lockdown #4", labelLoc = "bottom")%>%
+  dyEvent("2021-12-12", "End of Lockdown #4", labelLoc = "bottom")%>%
+  dyRangeSelector(dateWindow = c("2021-10-01", today))%>%
+  dyOptions(useDataTimezone = TRUE)
+```
+
+
+### Info
+
+###### Description
+
+The indicator for 
+
+###### Keywords
+
+- Geizhals
+- Mediamarkt
+- e-tec
+- willhaben
+- Elektronik
+
+[Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/elektro.csv){target="_blank"}
+
+## Row {.tabset .tabset-fade}
+
+### körpernahe Dienstleistungen
+
+```{r, eval=T}
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/dienstleistung.csv"
+#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
+
+dienstleistung <- read_csv(source) %>%
+ # select(time,value) %>%
+  ts_xts()
+
+dygraph(dienstleistung, group = "keywords")%>%
+  dyAxis("x", drawGrid = FALSE)%>%
+  dySeries("PC1", label = "Index")%>%
+  dyEvent("2021-6-10", "Easing measures - less social distancing", labelLoc = "bottom")%>%
+  dyEvent("2021-7-01", "Easing measures - night gastronomy", labelLoc = "bottom")%>%
+  dyEvent("2021-11-22", "Lockdown #4", labelLoc = "bottom")%>%
+  dyEvent("2021-12-12", "End of Lockdown #4", labelLoc = "bottom")%>%
+  dyRangeSelector(dateWindow = c("2021-10-01", today))%>%
+  dyOptions(useDataTimezone = TRUE)
+```
+
+
+### Info
+
+###### Description
+
+The indicator for 
+
+###### Keywords
+
+- friseur
+- massage
+- nagelstudio
+
+[Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/dienstleistung.csv){target="_blank"}
+
+<!----------------------------------------------------------------------->
+<!---------------------------------------------------- PES PAGE ->
+<!----------------------------------------------------------------------->
 
 # PES
 
