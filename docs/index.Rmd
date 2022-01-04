@@ -490,6 +490,89 @@ The category *Watches and Jewellery* includes stores and brands selling luxuriou
 <!---------------------------------------------------- PES PAGE --------->
 <!----------------------------------------------------------------------->
 
+# moment
+
+## Row {.tabset .tabset-fade}
+
+### Corona Indikator
+
+```{r, eval=T}
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/corona.csv"
+#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
+
+corona <- read_csv(source) %>%
+ # select(time,value) %>%
+  ts_xts()
+
+dygraph(corona, group = "keywords")%>%
+  dyAxis("x", drawGrid = FALSE)%>%
+  dySeries("PC1", label = "Index")%>%
+  dyEvent("2021-6-10", "Easing measures - less social distancing", labelLoc = "bottom")%>%
+  dyEvent("2021-7-01", "Easing measures - night gastronomy", labelLoc = "bottom")%>%
+  dyEvent("2021-11-22", "Lockdown #4", labelLoc = "bottom")%>%
+  dyEvent("2021-12-12", "End of Lockdown #4", labelLoc = "bottom")%>%
+  dyRangeSelector(dateWindow = c("2021-10-01", today))%>%
+  dyOptions(useDataTimezone = TRUE)
+```
+
+
+### Info
+
+###### Description
+
+The indicator for 
+
+###### Keywords
+
+- Cofag
+- Stundungen 
+- Kredite 
+- Inzidenz
+- Coronafälle
+
+[Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/corona.csv){target="_blank"}
+
+## Row {.tabset .tabset-fade}
+
+### Winterurlaub/Skitourismus
+
+```{r, eval=T}
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/ski.csv"
+#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
+
+ski <- read_csv(source) %>%
+ # select(time,value) %>%
+  ts_xts()
+
+dygraph(ski, group = "keywords")%>%
+  dyAxis("x", drawGrid = FALSE)%>%
+  dySeries("PC1", label = "Index")%>%
+  dyEvent("2021-6-10", "Easing measures - less social distancing", labelLoc = "bottom")%>%
+  dyEvent("2021-7-01", "Easing measures - night gastronomy", labelLoc = "bottom")%>%
+  dyEvent("2021-11-22", "Lockdown #4", labelLoc = "bottom")%>%
+  dyEvent("2021-12-12", "End of Lockdown #4", labelLoc = "bottom")%>%
+  dyRangeSelector(dateWindow = c("2021-10-01", today))%>%
+  dyOptions(useDataTimezone = TRUE)
+```
+
+
+### Info
+
+###### Description
+
+The indicator for 
+
+###### Keywords
+
+- Urlaub Tirol
+- Skiurlaub Österreich
+- Ischgl
+- Winterurlaub
+- Skifahren Österreich
+
+[Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/ski.csv){target="_blank"}
+
+
 # PES
 
 ### {data-height=800} 
