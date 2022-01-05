@@ -731,6 +731,209 @@ The indicator for
 
 [Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/dienstleistung.csv){target="_blank"}
 
+## Row {.tabset .tabset-fade}
+
+### Baumarkt und Garten
+
+```{r, eval=T}
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/baumarkt.csv"
+#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
+
+baumarkt <- read_csv(source) %>%
+ # select(time,value) %>%
+  ts_xts()
+
+dygraph(baumarkt, group = "keywords")%>%
+  dyAxis("x", drawGrid = FALSE)%>%
+  dySeries("PC1", label = "Index")%>%
+  dyEvent("2021-6-10", "Easing measures - less social distancing", labelLoc = "bottom")%>%
+  dyEvent("2021-7-01", "Easing measures - night gastronomy", labelLoc = "bottom")%>%
+  dyEvent("2021-11-22", "Lockdown #4", labelLoc = "bottom")%>%
+  dyEvent("2021-12-12", "End of Lockdown #4", labelLoc = "bottom")%>%
+  dyRangeSelector(dateWindow = c("2021-10-01", today))%>%
+  dyOptions(useDataTimezone = TRUE)
+```
+
+
+### Info
+
+###### Description
+
+The indicator for 
+
+###### Keywords
+
+- dehner
+- b&b
+- kika
+- leiner
+- bellaflora
+- xxxlutz
+- ikea
+
+[Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/baumarkt.csv){target="_blank"}
+
+## Row {.tabset .tabset-fade}
+
+### Einkaufszentren
+
+```{r, eval=T}
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/ekz.csv"
+#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
+
+ekz <- read_csv(source) %>%
+ # select(time,value) %>%
+  ts_xts()
+
+dygraph(ekz, group = "keywords")%>%
+  dyAxis("x", drawGrid = FALSE)%>%
+  dySeries("PC1", label = "Index")%>%
+  dyEvent("2021-6-10", "Easing measures - less social distancing", labelLoc = "bottom")%>%
+  dyEvent("2021-7-01", "Easing measures - night gastronomy", labelLoc = "bottom")%>%
+  dyEvent("2021-11-22", "Lockdown #4", labelLoc = "bottom")%>%
+  dyEvent("2021-12-12", "End of Lockdown #4", labelLoc = "bottom")%>%
+  dyRangeSelector(dateWindow = c("2021-10-01", today))%>%
+  dyOptions(useDataTimezone = TRUE)
+```
+
+
+### Info
+
+###### Description
+
+The indicator for 
+
+###### Keywords
+
+- Mariahilferstraße
+- Einkaufszentrum
+- Kärtner Straße
+- Herrengasse
+- Getreidegasse
+
+
+[Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/ekz.csv){target="_blank"}
+
+## Row {.tabset .tabset-fade}
+
+### Fitnesscenter
+
+```{r, eval=T}
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/fitness.csv"
+#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
+
+fitness <- read_csv(source) %>%
+ # select(time,value) %>%
+  ts_xts()
+
+dygraph(fitness, group = "keywords")%>%
+  dyAxis("x", drawGrid = FALSE)%>%
+  dySeries("PC1", label = "Index")%>%
+  dyEvent("2021-6-10", "Easing measures - less social distancing", labelLoc = "bottom")%>%
+  dyEvent("2021-7-01", "Easing measures - night gastronomy", labelLoc = "bottom")%>%
+  dyEvent("2021-11-22", "Lockdown #4", labelLoc = "bottom")%>%
+  dyEvent("2021-12-12", "End of Lockdown #4", labelLoc = "bottom")%>%
+  dyRangeSelector(dateWindow = c("2021-10-01", today))%>%
+  dyOptions(useDataTimezone = TRUE)
+```
+
+
+### Info
+
+###### Description
+
+The indicator for 
+
+###### Keywords
+
+- fitinn  
+- mcfit
+- crossfit
+- fitnesscenter
+- john harris
+
+[Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/fitness.csv){target="_blank"}
+
+## Row {.tabset .tabset-fade}
+
+### Bibliotheken
+
+```{r, eval=T}
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/bibliotheken.csv"
+#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
+
+bibliotheken <- read_csv(source) %>%
+ # select(time,value) %>%
+  ts_xts()
+
+dygraph(bibliotheken, group = "keywords")%>%
+  dyAxis("x", drawGrid = FALSE)%>%
+  dySeries("PC1", label = "Index")%>%
+  dyEvent("2021-6-10", "Easing measures - less social distancing", labelLoc = "bottom")%>%
+  dyEvent("2021-7-01", "Easing measures - night gastronomy", labelLoc = "bottom")%>%
+  dyEvent("2021-11-22", "Lockdown #4", labelLoc = "bottom")%>%
+  dyEvent("2021-12-12", "End of Lockdown #4", labelLoc = "bottom")%>%
+  dyRangeSelector(dateWindow = c("2021-10-01", today))%>%
+  dyOptions(useDataTimezone = TRUE)
+```
+
+
+### Info
+
+###### Description
+
+The indicator for 
+
+###### Keywords
+
+- bibliothek
+- bib
+- unibib
+- städtische bücherei
+
+[Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/bibliotheken.csv){target="_blank"}
+
+## Row {.tabset .tabset-fade}
+
+### Mobilität (Auto)
+
+```{r, eval=T}
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/mobilitaet_auto.csv"
+#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
+
+mobilitaet_auto <- read_csv(source) %>%
+ # select(time,value) %>%
+  ts_xts()
+
+dygraph(mobilitaet_auto, group = "keywords")%>%
+  dyAxis("x", drawGrid = FALSE)%>%
+  dySeries("PC1", label = "Index")%>%
+  dyEvent("2021-6-10", "Easing measures - less social distancing", labelLoc = "bottom")%>%
+  dyEvent("2021-7-01", "Easing measures - night gastronomy", labelLoc = "bottom")%>%
+  dyEvent("2021-11-22", "Lockdown #4", labelLoc = "bottom")%>%
+  dyEvent("2021-12-12", "End of Lockdown #4", labelLoc = "bottom")%>%
+  dyRangeSelector(dateWindow = c("2021-10-01", today))%>%
+  dyOptions(useDataTimezone = TRUE)
+```
+
+
+### Info
+
+###### Description
+
+The indicator for 
+
+###### Keywords
+
+- Tankpreisrechner
+- kfz werkstatt
+- Benzinpreis
+- Autobahnvignette
+- kfz Versicherung
+
+[Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/mobilität_auto.csv){target="_blank"}
+
+
 <!----------------------------------------------------------------------->
 <!---------------------------------------------------- PES PAGE ->
 <!----------------------------------------------------------------------->
