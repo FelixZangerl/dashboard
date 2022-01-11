@@ -532,6 +532,18 @@ The indicator for
 
 [Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/corona.csv){target="_blank"}
 
+### Zusammensetzung
+
+```{r}
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/corona_comp.csv"
+
+corona_comp <- read_csv(source) %>%
+  ts_xts()
+
+dygraph(corona_comp)
+```
+
+
 ## Row {.tabset .tabset-fade}
 
 ### Winterurlaub/Skitourismus
