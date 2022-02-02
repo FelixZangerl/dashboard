@@ -482,7 +482,7 @@ dygraph(jewelry,group = "keywords")%>%
     dyEvent("2021-11-22", "Lockdown #4", labelLoc = "bottom")%>%
     dyEvent("2021-12-12", "End of Lockdown #4", labelLoc = "bottom")%>%
     dyEvent("2022-01-31", "End of Lockdown for unvaccinated", labelLoc = "bottom") %>%
-      dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
+      dyRangeSelector(dateWindow = c("2021-11-01", today))%>%
       dyOptions(useDataTimezone = TRUE)
 ```
 
@@ -521,7 +521,7 @@ corona <- read_csv(source) %>%
  # select(time,value) %>%
   ts_xts()
 
-dygraph(corona, group = "keywords")%>%
+dygraph(corona, group = "moment")%>%
   dyAxis("x", drawGrid = FALSE)%>%
   dySeries("PC1", label = "Index")%>%
   dyEvent("2021-6-10", "Easing measures - less social distancing", labelLoc = "bottom")%>%
@@ -530,7 +530,7 @@ dygraph(corona, group = "keywords")%>%
     dyEvent("2021-11-22", "Lockdown #4", labelLoc = "bottom")%>%
     dyEvent("2021-12-12", "End of Lockdown #4", labelLoc = "bottom")%>%
     dyEvent("2022-01-31", "End of Lockdown for unvaccinated", labelLoc = "bottom") %>%
-      dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
+      dyRangeSelector(dateWindow = c("2021-11-01", today))%>%
       dyOptions(useDataTimezone = TRUE)
 ```
 
@@ -575,7 +575,7 @@ ski <- read_csv(source) %>%
  # select(time,value) %>%
   ts_xts()
 
-dygraph(ski, group = "keywords")%>%
+dygraph(ski, group = "moment")%>%
   dyAxis("x", drawGrid = FALSE)%>%
   dySeries("PC1", label = "Index")%>%
   dyEvent("2021-6-10", "Easing measures - less social distancing", labelLoc = "bottom")%>%
@@ -584,7 +584,7 @@ dygraph(ski, group = "keywords")%>%
     dyEvent("2021-11-22", "Lockdown #4", labelLoc = "bottom")%>%
     dyEvent("2021-12-12", "End of Lockdown #4", labelLoc = "bottom")%>%
     dyEvent("2022-01-31", "End of Lockdown for unvaccinated", labelLoc = "bottom") %>%
-      dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
+      dyRangeSelector(dateWindow = c("2021-11-01", today))%>%
       dyOptions(useDataTimezone = TRUE)
 ```
 
@@ -617,7 +617,7 @@ handel_offline <- read_csv(source) %>%
  # select(time,value) %>%
   ts_xts()
 
-dygraph(handel_offline, group = "keywords")%>%
+dygraph(handel_offline, group = "moment")%>%
   dyAxis("x", drawGrid = FALSE)%>%
   dySeries("PC1", label = "Index")%>%
   dyEvent("2021-6-10", "Easing measures - less social distancing", labelLoc = "bottom")%>%
@@ -626,7 +626,7 @@ dygraph(handel_offline, group = "keywords")%>%
     dyEvent("2021-11-22", "Lockdown #4", labelLoc = "bottom")%>%
     dyEvent("2021-12-12", "End of Lockdown #4", labelLoc = "bottom")%>%
     dyEvent("2022-01-31", "End of Lockdown for unvaccinated", labelLoc = "bottom") %>%
-      dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
+      dyRangeSelector(dateWindow = c("2021-11-01", today))%>%
       dyOptions(useDataTimezone = TRUE)
 ```
 
@@ -660,7 +660,7 @@ gastro <- read_csv(source) %>%
  # select(time,value) %>%
   ts_xts()
 
-dygraph(gastro, group = "keywords")%>%
+dygraph(gastro, group = "moment")%>%
   dyAxis("x", drawGrid = FALSE)%>%
   dySeries("PC1", label = "Index")%>%
   dyEvent("2021-6-10", "Easing measures - less social distancing", labelLoc = "bottom")%>%
@@ -669,7 +669,7 @@ dygraph(gastro, group = "keywords")%>%
     dyEvent("2021-11-22", "Lockdown #4", labelLoc = "bottom")%>%
     dyEvent("2021-12-12", "End of Lockdown #4", labelLoc = "bottom")%>%
     dyEvent("2022-01-31", "End of Lockdown for unvaccinated", labelLoc = "bottom") %>%
-      dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
+      dyRangeSelector(dateWindow = c("2021-11-01", today))%>%
       dyOptions(useDataTimezone = TRUE)
 ```
 
@@ -702,7 +702,7 @@ elektro <- read_csv(source) %>%
  # select(time,value) %>%
   ts_xts()
 
-dygraph(elektro, group = "keywords")%>%
+dygraph(elektro, group = "moment")%>%
   dyAxis("x", drawGrid = FALSE)%>%
   dySeries("PC1", label = "Index")%>%
   dyEvent("2021-6-10", "Easing measures - less social distancing", labelLoc = "bottom")%>%
@@ -711,7 +711,7 @@ dygraph(elektro, group = "keywords")%>%
     dyEvent("2021-11-22", "Lockdown #4", labelLoc = "bottom")%>%
     dyEvent("2021-12-12", "End of Lockdown #4", labelLoc = "bottom")%>%
     dyEvent("2022-01-31", "End of Lockdown for unvaccinated", labelLoc = "bottom") %>%
-      dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
+      dyRangeSelector(dateWindow = c("2021-11-01", today))%>%
       dyOptions(useDataTimezone = TRUE)
 ```
 
@@ -744,7 +744,7 @@ dienstleistung <- read_csv(source) %>%
  # select(time,value) %>%
   ts_xts()
 
-dygraph(dienstleistung, group = "keywords")%>%
+dygraph(dienstleistung, group = "moment")%>%
   dyAxis("x", drawGrid = FALSE)%>%
   dySeries("PC1", label = "Index")%>%
   dyEvent("2021-6-10", "Easing measures - less social distancing", labelLoc = "bottom")%>%
@@ -753,7 +753,7 @@ dygraph(dienstleistung, group = "keywords")%>%
     dyEvent("2021-11-22", "Lockdown #4", labelLoc = "bottom")%>%
     dyEvent("2021-12-12", "End of Lockdown #4", labelLoc = "bottom")%>%
     dyEvent("2022-01-31", "End of Lockdown for unvaccinated", labelLoc = "bottom") %>%
-      dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
+      dyRangeSelector(dateWindow = c("2021-11-01", today))%>%
       dyOptions(useDataTimezone = TRUE)
 ```
 
@@ -784,7 +784,7 @@ baumarkt <- read_csv(source) %>%
  # select(time,value) %>%
   ts_xts()
 
-dygraph(baumarkt, group = "keywords")%>%
+dygraph(baumarkt, group = "moment")%>%
   dyAxis("x", drawGrid = FALSE)%>%
   dySeries("PC1", label = "Index")%>%
   dyEvent("2021-6-10", "Easing measures - less social distancing", labelLoc = "bottom")%>%
@@ -793,7 +793,7 @@ dygraph(baumarkt, group = "keywords")%>%
     dyEvent("2021-11-22", "Lockdown #4", labelLoc = "bottom")%>%
     dyEvent("2021-12-12", "End of Lockdown #4", labelLoc = "bottom")%>%
     dyEvent("2022-01-31", "End of Lockdown for unvaccinated", labelLoc = "bottom") %>%
-      dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
+      dyRangeSelector(dateWindow = c("2021-11-01", today))%>%
       dyOptions(useDataTimezone = TRUE)
 ```
 
@@ -828,7 +828,7 @@ ekz <- read_csv(source) %>%
  # select(time,value) %>%
   ts_xts()
 
-dygraph(ekz, group = "keywords")%>%
+dygraph(ekz, group = "moment")%>%
   dyAxis("x", drawGrid = FALSE)%>%
   dySeries("PC1", label = "Index")%>%
   dyEvent("2021-6-10", "Easing measures - less social distancing", labelLoc = "bottom")%>%
@@ -837,7 +837,7 @@ dygraph(ekz, group = "keywords")%>%
     dyEvent("2021-11-22", "Lockdown #4", labelLoc = "bottom")%>%
     dyEvent("2021-12-12", "End of Lockdown #4", labelLoc = "bottom")%>%
     dyEvent("2022-01-31", "End of Lockdown for unvaccinated", labelLoc = "bottom") %>%
-      dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
+      dyRangeSelector(dateWindow = c("2021-11-01", today))%>%
       dyOptions(useDataTimezone = TRUE)
 ```
 
@@ -871,7 +871,7 @@ fitness <- read_csv(source) %>%
  # select(time,value) %>%
   ts_xts()
 
-dygraph(fitness, group = "keywords")%>%
+dygraph(fitness, group = "moment")%>%
   dyAxis("x", drawGrid = FALSE)%>%
   dySeries("PC1", label = "Index")%>%
   dyEvent("2021-6-10", "Easing measures - less social distancing", labelLoc = "bottom")%>%
@@ -880,7 +880,7 @@ dygraph(fitness, group = "keywords")%>%
     dyEvent("2021-11-22", "Lockdown #4", labelLoc = "bottom")%>%
     dyEvent("2021-12-12", "End of Lockdown #4", labelLoc = "bottom")%>%
     dyEvent("2022-01-31", "End of Lockdown for unvaccinated", labelLoc = "bottom") %>%
-      dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
+      dyRangeSelector(dateWindow = c("2021-11-01", today))%>%
       dyOptions(useDataTimezone = TRUE)
 ```
 
@@ -913,7 +913,7 @@ bibliotheken <- read_csv(source) %>%
  # select(time,value) %>%
   ts_xts()
 
-dygraph(bibliotheken, group = "keywords")%>%
+dygraph(bibliotheken, group = "moment")%>%
   dyAxis("x", drawGrid = FALSE)%>%
   dySeries("PC1", label = "Index")%>%
   dyEvent("2021-6-10", "Easing measures - less social distancing", labelLoc = "bottom")%>%
@@ -922,7 +922,7 @@ dygraph(bibliotheken, group = "keywords")%>%
     dyEvent("2021-11-22", "Lockdown #4", labelLoc = "bottom")%>%
     dyEvent("2021-12-12", "End of Lockdown #4", labelLoc = "bottom")%>%
     dyEvent("2022-01-31", "End of Lockdown for unvaccinated", labelLoc = "bottom") %>%
-      dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
+      dyRangeSelector(dateWindow = c("2021-11-01", today))%>%
       dyOptions(useDataTimezone = TRUE)
 ```
 
@@ -954,7 +954,7 @@ mobilitaet_auto <- read_csv(source) %>%
  # select(time,value) %>%
   ts_xts()
 
-dygraph(mobilitaet_auto, group = "keywords")%>%
+dygraph(mobilitaet_auto, group = "moment")%>%
   dyAxis("x", drawGrid = FALSE)%>%
   dySeries("PC1", label = "Index")%>%
   dyEvent("2021-6-10", "Easing measures - less social distancing", labelLoc = "bottom")%>%
@@ -963,7 +963,7 @@ dygraph(mobilitaet_auto, group = "keywords")%>%
     dyEvent("2021-11-22", "Lockdown #4", labelLoc = "bottom")%>%
     dyEvent("2021-12-12", "End of Lockdown #4", labelLoc = "bottom")%>%
     dyEvent("2022-01-31", "End of Lockdown for unvaccinated", labelLoc = "bottom") %>%
-      dyRangeSelector(dateWindow = c("2020-01-01", today))%>%
+      dyRangeSelector(dateWindow = c("2021-11-01", today))%>%
       dyOptions(useDataTimezone = TRUE)
 ```
 
