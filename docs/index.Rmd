@@ -705,7 +705,7 @@ The indicator for
 
 [Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/ski.csv){target="_blank"}
 
-### VGR Handel - WWWI
+### VGR Gastronomie und Beherbergung - WWWI
 
 ```{r}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/gastro_vgr"
