@@ -551,6 +551,7 @@ The indicator for
 
 [Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/corona.csv){target="_blank"}
 
+
 ### Zusammensetzung
 
 ```{r}
@@ -648,6 +649,20 @@ The indicator for
 
 [Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/handel_offline.csv){target="_blank"}
 
+### VGR Handel - WWWI
+
+```{r}
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/handel_offline_vgr"
+
+corona_vgr <- read_csv(source) %>%
+  ts_xts()
+
+colnames(corona_vgr) <- c("Handel(WWWI-WIFO)","stationärer Handel (GSV)")
+
+dygraph(corona_vgr)
+```
+
+
 ## Row {.tabset .tabset-fade}
 
 ### Gastronomie
@@ -689,6 +704,19 @@ The indicator for
 - Speisekarte
 
 [Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/ski.csv){target="_blank"}
+
+### VGR Handel - WWWI
+
+```{r}
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/gastro_vgr"
+
+gastro_vgr <- read_csv(source) %>%
+  ts_xts()
+
+colnames(gastro_vgr) <- c("Gastronomie und Beherbergung(WWWI-WIFO)","Gastronomie (GSV)")
+
+dygraph(gastro_vgr)
+```
 
 ## Row {.tabset .tabset-fade}
 
