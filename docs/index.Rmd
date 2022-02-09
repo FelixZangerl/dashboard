@@ -654,14 +654,14 @@ The indicator for
 ```{r}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/handel_offline_vgr.csv"
 
-corona_vgr <- read_csv(source)
+handel_offline_vgr_vgr <- read_csv(source)
 
-colnames(corona_vgr) <- c("DATE", "Handel(WWWI-WIFO)","stationärer Handel (GSV)")
+colnames(handel_offline_vgr_vgr) <- c("DATE", "Handel(WWWI-WIFO)","stationärer Handel (GSV)")
 
-corona_vgr <- corona_vgr %>%
+handel_offline_vgr_vgr <- handel_offline_vgr_vgr %>%
   ts_xts()
 
-dygraph(corona_vgr)
+dygraph(handel_offline_vgr_vgr)
 ```
 
 
