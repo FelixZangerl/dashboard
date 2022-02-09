@@ -652,12 +652,14 @@ The indicator for
 ### VGR Handel - WWWI
 
 ```{r}
-source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/handel_offline_vgr"
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/handel_offline_vgr.csv"
 
-corona_vgr <- read_csv(source) %>%
+corona_vgr <- read_csv(source)
+
+colnames(corona_vgr) <- c("DATE", "Handel(WWWI-WIFO)","stationärer Handel (GSV)")
+
+corona_vgr <- corona_vgr %>%
   ts_xts()
-
-colnames(corona_vgr) <- c("Handel(WWWI-WIFO)","stationärer Handel (GSV)")
 
 dygraph(corona_vgr)
 ```
@@ -708,12 +710,14 @@ The indicator for
 ### VGR Gastronomie und Beherbergung - WWWI
 
 ```{r}
-source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/gastro_vgr"
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/gastro_vgr.csv"
 
-gastro_vgr <- read_csv(source) %>%
+gastro_vgr <- read_csv(source) 
+
+colnames(gastro_vgr) <- c("DATE", "Gastronomie und Beherbergung(WWWI-WIFO)","Gastronomie (GSV)")
+
+gastro_vgr <- gastro_vgr %>%
   ts_xts()
-
-colnames(gastro_vgr) <- c("Gastronomie und Beherbergung(WWWI-WIFO)","Gastronomie (GSV)")
 
 dygraph(gastro_vgr)
 ```
