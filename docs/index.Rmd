@@ -13,6 +13,7 @@ output:
          title: "Dashboard", 
          href: "https://github.com/FelixZangerl/dashboard", align: right, target: blank}
       - {title: "R package", href: "https://trendecon.github.io/trendecon/", align: right, target: blank}
+      - {title: "Thesis", href: "https://raw.githubusercontent.com/FelixZangerl/gsv_dashboard/main/Masterthesis_Zangerl.pdf", align: right}
 ---
 
 ```{r setup, include=FALSE}
