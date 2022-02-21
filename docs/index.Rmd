@@ -31,7 +31,7 @@ library(ggplot2)
 today <- as.character(Sys.Date())
 ```
 
-# Home
+# GSV
 
 ### trendEcon Austria
 
@@ -512,102 +512,6 @@ The category *Watches and Jewellery* includes stores and brands selling luxuriou
 
 ## Row {.tabset .tabset-fade}
 
-### Corona Indikator
-
-```{r, eval=T}
-source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/corona.csv"
-#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
-
-corona <- read_csv(source) %>%
- # select(time,value) %>%
-  ts_xts()
-
-dygraph(corona, group = "moment")%>%
-  dyAxis("x", drawGrid = FALSE)%>%
-  dySeries("PC1", label = "Index")%>%
-  dyEvent("2021-6-10", "Easing measures - less social distancing", labelLoc = "bottom")%>%
-  dyEvent("2021-7-01", "Easing measures - night gastronomy", labelLoc = "bottom")%>%
-    dyEvent("2021-11-15", "Lockdown for unvaccinated") %>%
-    dyEvent("2021-11-22", "Lockdown #4", labelLoc = "bottom")%>%
-    dyEvent("2021-12-12", "End of Lockdown #4", labelLoc = "bottom")%>%
-    dyEvent("2022-01-31", "End of Lockdown for unvaccinated", labelLoc = "bottom") %>%
-      dyRangeSelector(dateWindow = c("2021-11-01", today))%>%
-      dyOptions(useDataTimezone = TRUE)
-```
-
-
-### Info
-
-###### Description
-
-The indicator for 
-
-###### Keywords
-
-- Cofag
-- Kredite 
-- Inzidenz
-- Coronafälle
-
-[Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/corona.csv){target="_blank"}
-
-
-### Zusammensetzung
-
-```{r}
-source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/corona_comp.csv"
-
-corona_comp <- read_csv(source) %>%
-  ts_xts()
-
-dygraph(corona_comp)
-```
-
-
-## Row {.tabset .tabset-fade}
-
-### Winterurlaub/Skitourismus
-
-```{r, eval=T}
-source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/ski.csv"
-#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
-
-ski <- read_csv(source) %>%
- # select(time,value) %>%
-  ts_xts()
-
-dygraph(ski, group = "moment")%>%
-  dyAxis("x", drawGrid = FALSE)%>%
-  dySeries("PC1", label = "Index")%>%
-  dyEvent("2021-6-10", "Easing measures - less social distancing", labelLoc = "bottom")%>%
-  dyEvent("2021-7-01", "Easing measures - night gastronomy", labelLoc = "bottom")%>%
-    dyEvent("2021-11-15", "Lockdown for unvaccinated") %>%
-    dyEvent("2021-11-22", "Lockdown #4", labelLoc = "bottom")%>%
-    dyEvent("2021-12-12", "End of Lockdown #4", labelLoc = "bottom")%>%
-    dyEvent("2022-01-31", "End of Lockdown for unvaccinated", labelLoc = "bottom") %>%
-      dyRangeSelector(dateWindow = c("2021-11-01", today))%>%
-      dyOptions(useDataTimezone = TRUE)
-```
-
-
-### Info
-
-###### Description
-
-The indicator for 
-
-###### Keywords
-
-- Urlaub Tirol
-- Skiurlaub Österreich
-- Ischgl
-- Winterurlaub
-- Skifahren Österreich
-
-[Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/ski.csv){target="_blank"}
-
-## Row {.tabset .tabset-fade}
-
 ### stationärer Handel
 
 ```{r, eval=T}
@@ -721,6 +625,103 @@ gastro_vgr <- gastro_vgr %>%
 
 dygraph(gastro_vgr)
 ```
+
+## Row {.tabset .tabset-fade}
+
+### Corona Indikator
+
+```{r, eval=T}
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/corona.csv"
+#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
+
+corona <- read_csv(source) %>%
+ # select(time,value) %>%
+  ts_xts()
+
+dygraph(corona, group = "moment")%>%
+  dyAxis("x", drawGrid = FALSE)%>%
+  dySeries("PC1", label = "Index")%>%
+  dyEvent("2021-6-10", "Easing measures - less social distancing", labelLoc = "bottom")%>%
+  dyEvent("2021-7-01", "Easing measures - night gastronomy", labelLoc = "bottom")%>%
+    dyEvent("2021-11-15", "Lockdown for unvaccinated") %>%
+    dyEvent("2021-11-22", "Lockdown #4", labelLoc = "bottom")%>%
+    dyEvent("2021-12-12", "End of Lockdown #4", labelLoc = "bottom")%>%
+    dyEvent("2022-01-31", "End of Lockdown for unvaccinated", labelLoc = "bottom") %>%
+      dyRangeSelector(dateWindow = c("2021-11-01", today))%>%
+      dyOptions(useDataTimezone = TRUE)
+```
+
+
+### Info
+
+###### Description
+
+The indicator for 
+
+###### Keywords
+
+- Cofag
+- Kredite 
+- Inzidenz
+- Coronafälle
+
+[Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/corona.csv){target="_blank"}
+
+
+### Zusammensetzung
+
+```{r}
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/corona_comp.csv"
+
+corona_comp <- read_csv(source) %>%
+  ts_xts()
+
+dygraph(corona_comp)
+```
+
+
+## Row {.tabset .tabset-fade}
+
+### Winterurlaub/Skitourismus
+
+```{r, eval=T}
+source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/ski.csv"
+#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
+
+ski <- read_csv(source) %>%
+ # select(time,value) %>%
+  ts_xts()
+
+dygraph(ski, group = "moment")%>%
+  dyAxis("x", drawGrid = FALSE)%>%
+  dySeries("PC1", label = "Index")%>%
+  dyEvent("2021-6-10", "Easing measures - less social distancing", labelLoc = "bottom")%>%
+  dyEvent("2021-7-01", "Easing measures - night gastronomy", labelLoc = "bottom")%>%
+    dyEvent("2021-11-15", "Lockdown for unvaccinated") %>%
+    dyEvent("2021-11-22", "Lockdown #4", labelLoc = "bottom")%>%
+    dyEvent("2021-12-12", "End of Lockdown #4", labelLoc = "bottom")%>%
+    dyEvent("2022-01-31", "End of Lockdown for unvaccinated", labelLoc = "bottom") %>%
+      dyRangeSelector(dateWindow = c("2021-11-01", today))%>%
+      dyOptions(useDataTimezone = TRUE)
+```
+
+
+### Info
+
+###### Description
+
+The indicator for 
+
+###### Keywords
+
+- Urlaub Tirol
+- Skiurlaub Österreich
+- Ischgl
+- Winterurlaub
+- Skifahren Österreich
+
+[Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/ski.csv){target="_blank"}
+
 
 ## Row {.tabset .tabset-fade}
 
