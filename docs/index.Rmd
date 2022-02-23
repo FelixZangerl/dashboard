@@ -552,6 +552,7 @@ The indicator for
 
 
 [Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/handel_offline.csv){target="_blank"}
+[Download data - Handel WWWI](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/handel_offline_vgr.csv)
 
 ### VGR Handel - WWWI
 
@@ -610,6 +611,8 @@ The indicator for
 - Speisekarte
 
 [Download data](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/ski.csv){target="_blank"}
+[Download data - Gastro WWWI](https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/gastro_vgr.csv)
+
 
 ### VGR Gastronomie und Beherbergung - WWWI
 
