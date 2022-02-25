@@ -46,7 +46,7 @@ source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/t
 #source <- "../../gsv_data/raw/at/trendecon_sa.csv"
 
 economic_sentiment <- read_csv(source) %>%
-  select(time,value) %>%
+  dplyr::select(time,value) %>%
   ts_xts()
 
 
@@ -99,7 +99,7 @@ source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/c
 #source <- "../../gsv_data/raw/at/clothing_sa.csv"
 
 clothing <- read_csv(source) %>%
-  select(time,value) %>%
+  dplyr::select(time,value) %>%
   ts_xts()
 
 dygraph(clothing,group = "keywords")%>%
@@ -152,7 +152,7 @@ source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/h
 #source <- "../../gsv_data/raw/at/home_office_sa.csv"
 
 home_office <- read_csv(source) %>%
-  select(time,value) %>%
+  dplyr::select(time,value) %>%
   ts_xts()
 
 dygraph(home_office,group = "keywords")%>%
@@ -203,7 +203,7 @@ source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/g
 #source <- "../../gsv_data/raw/at/gardening_sa.csv"
 
 gardening <- read_csv(source) %>%
-  select(time,value) %>%
+  dplyr::select(time,value) %>%
   ts_xts()
 
 dygraph(gardening,group = "keywords")%>%
@@ -255,7 +255,7 @@ source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/f
 #source <- "../../gsv_data/raw/at/food_delivery_sa.csv"
 
 food_delivery <- read_csv(source) %>%
-  select(time,value) %>%
+  dplyr::select(time,value) %>%
   ts_xts()
 
 dygraph(food_delivery,group = "keywords")%>%
@@ -305,7 +305,7 @@ source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/c
 #source <- "../../gsv_data/raw/at/cultural_sa.csv"
 
 cultural <- read_csv(source) %>%
-  select(time,value) %>%
+  dplyr::select(time,value) %>%
   ts_xts()
 
 dygraph(cultural,group = "keywords")%>%
@@ -359,7 +359,7 @@ source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/t
 #source <- "../../gsv_data/raw/at/travel_sa.csv"
 
 travel <- read_csv(source) %>%
-  select(time,value) %>%
+  dplyr::select(time,value) %>%
   ts_xts()
 
 dygraph(travel,group = "keywords")%>%
@@ -409,7 +409,7 @@ source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/m
 #source <- "../../gsv_data/raw/at/mobility_sa.csv"
 
 mobility <- read_csv(source) %>%
-  select(time,value) %>%
+  dplyr::select(time,value) %>%
   ts_xts()
 
 dygraph(mobility,group = "keywords")%>%
@@ -460,7 +460,7 @@ source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/l
 #source <- "../../gsv_data/raw/at/luxury_sa.csv"
 
 jewelry <- read_csv(source) %>%
-  select(time,value) %>%
+  dplyr::select(time,value) %>%
   ts_xts()
 
 dygraph(jewelry,group = "keywords")%>%
@@ -519,7 +519,7 @@ source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/han
 #source <- "../../gsv_data/raw/at/trendecon_sa.csv"
 
 handel_offline <- read_csv(source) %>%
- # select(time,value) %>%
+ # dplyr::select(time,value) %>%
   ts_xts()
 
 dygraph(handel_offline, group = "moment")%>%
@@ -579,7 +579,7 @@ source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/gas
 #source <- "../../gsv_data/raw/at/trendecon_sa.csv"
 
 gastro <- read_csv(source) %>%
- # select(time,value) %>%
+ # dplyr::select(time,value) %>%
   ts_xts()
 
 dygraph(gastro, group = "moment")%>%
@@ -638,7 +638,7 @@ source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/cor
 #source <- "../../gsv_data/raw/at/trendecon_sa.csv"
 
 corona <- read_csv(source) %>%
- # select(time,value) %>%
+ # dplyr::select(time,value) %>%
   ts_xts()
 
 dygraph(corona, group = "moment")%>%
@@ -692,7 +692,7 @@ source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/ski
 #source <- "../../gsv_data/raw/at/trendecon_sa.csv"
 
 ski <- read_csv(source) %>%
- # select(time,value) %>%
+ # dplyr::select(time,value) %>%
   ts_xts()
 
 dygraph(ski, group = "moment")%>%
@@ -735,7 +735,7 @@ source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/ele
 #source <- "../../gsv_data/raw/at/trendecon_sa.csv"
 
 elektro <- read_csv(source) %>%
- # select(time,value) %>%
+ # dplyr::select(time,value) %>%
   ts_xts()
 
 dygraph(elektro, group = "moment")%>%
@@ -777,7 +777,7 @@ source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/die
 #source <- "../../gsv_data/raw/at/trendecon_sa.csv"
 
 dienstleistung <- read_csv(source) %>%
- # select(time,value) %>%
+ # dplyr::select(time,value) %>%
   ts_xts()
 
 dygraph(dienstleistung, group = "moment")%>%
@@ -817,7 +817,7 @@ source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/bau
 #source <- "../../gsv_data/raw/at/trendecon_sa.csv"
 
 baumarkt <- read_csv(source) %>%
- # select(time,value) %>%
+ # dplyr::select(time,value) %>%
   ts_xts()
 
 dygraph(baumarkt, group = "moment")%>%
@@ -860,7 +860,7 @@ source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/ekz
 #source <- "../../gsv_data/raw/at/trendecon_sa.csv"
 
 ekz <- read_csv(source) %>%
- # select(time,value) %>%
+ # dplyr::select(time,value) %>%
   ts_xts()
 
 dygraph(ekz, group = "moment")%>%
@@ -903,7 +903,7 @@ source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/fit
 #source <- "../../gsv_data/raw/at/trendecon_sa.csv"
 
 fitness <- read_csv(source) %>%
- # select(time,value) %>%
+ # dplyr::select(time,value) %>%
   ts_xts()
 
 dygraph(fitness, group = "moment")%>%
@@ -945,7 +945,7 @@ source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/bib
 #source <- "../../gsv_data/raw/at/trendecon_sa.csv"
 
 bibliotheken <- read_csv(source) %>%
- # select(time,value) %>%
+ # dplyr::select(time,value) %>%
   ts_xts()
 
 dygraph(bibliotheken, group = "moment")%>%
@@ -986,7 +986,7 @@ source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/mob
 #source <- "../../gsv_data/raw/at/trendecon_sa.csv"
 
 mobilitaet_auto <- read_csv(source) %>%
- # select(time,value) %>%
+ # dplyr::select(time,value) %>%
   ts_xts()
 
 dygraph(mobilitaet_auto, group = "moment")%>%
