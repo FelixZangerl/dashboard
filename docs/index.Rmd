@@ -43,7 +43,7 @@ This dashboard is based on the work of [trendEcon](https://www.trendecon.org). T
 
 ```{r, eval=T}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/trendecon_sa.csv"
-#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/trendecon_sa.csv"
 
 economic_sentiment <- read_csv(source) %>%
   dplyr::select(time,value) %>%
@@ -96,7 +96,7 @@ The indicator for *Perceived Economic Situation* includes search terms that refl
 
 ```{r}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/clothing_sa.csv"
-#source <- "../../gsv_data/raw/at/clothing_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/clothing_sa.csv"
 
 clothing <- read_csv(source) %>%
   dplyr::select(time,value) %>%
@@ -149,7 +149,7 @@ The category *Clothing and Shoes* includes clothing and shoe stores as well as a
 
 ```{r}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/home_office_sa.csv"
-#source <- "../../gsv_data/raw/at/home_office_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/home_office_sa.csv"
 
 home_office <- read_csv(source) %>%
   dplyr::select(time,value) %>%
@@ -200,7 +200,7 @@ The category *Home Office* combine Google inquiries related to the new normal of
 
 ```{r}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/gardening_sa.csv"
-#source <- "../../gsv_data/raw/at/gardening_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/gardening_sa.csv"
 
 gardening <- read_csv(source) %>%
   dplyr::select(time,value) %>%
@@ -252,7 +252,7 @@ The category *Gardening and Home Improvement* includes stores selling materials 
 
 ```{r}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/food_delivery_sa.csv"
-#source <- "../../gsv_data/raw/at/food_delivery_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/food_delivery_sa.csv"
 
 food_delivery <- read_csv(source) %>%
   dplyr::select(time,value) %>%
@@ -302,7 +302,7 @@ The category *Food Delivery* includes search terms related to take away and orde
 
 ```{r}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/cultural_sa.csv"
-#source <- "../../gsv_data/raw/at/cultural_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/cultural_sa.csv"
 
 cultural <- read_csv(source) %>%
   dplyr::select(time,value) %>%
@@ -356,7 +356,7 @@ The category *Cultural Events* includes search terms related to concerts, theatr
 
 ```{r}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/travel_sa.csv"
-#source <- "../../gsv_data/raw/at/travel_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/travel_sa.csv"
 
 travel <- read_csv(source) %>%
   dplyr::select(time,value) %>%
@@ -406,7 +406,7 @@ The category *Travel Abroad* includes search terms used to book flights and holi
 
 ```{r}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/mobility_sa.csv"
-#source <- "../../gsv_data/raw/at/mobility_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/mobility_sa.csv"
 
 mobility <- read_csv(source) %>%
   dplyr::select(time,value) %>%
@@ -457,7 +457,7 @@ The category *Mobility* includes search terms related to ground transportation: 
 
 ```{r}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/raw/at/luxury_sa.csv"
-#source <- "../../gsv_data/raw/at/luxury_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/luxury_sa.csv"
 
 jewelry <- read_csv(source) %>%
   dplyr::select(time,value) %>%
@@ -516,7 +516,7 @@ The category *Watches and Jewellery* includes stores and brands selling luxuriou
 
 ```{r, eval=T}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/handel_offline.csv"
-#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/trendecon_sa.csv"
 
 handel_offline <- read_csv(source) %>%
  # dplyr::select(time,value) %>%
@@ -576,7 +576,7 @@ dygraph(handel_offline_vgr_vgr)
 
 ```{r, eval=T}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/gastro.csv"
-#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/trendecon_sa.csv"
 
 gastro <- read_csv(source) %>%
  # dplyr::select(time,value) %>%
@@ -635,7 +635,7 @@ dygraph(gastro_vgr)
 
 ```{r, eval=T}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/corona.csv"
-#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/trendecon_sa.csv"
 
 corona <- read_csv(source) %>%
  # dplyr::select(time,value) %>%
@@ -689,7 +689,7 @@ dygraph(corona_comp)
 
 ```{r, eval=T}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/ski.csv"
-#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/trendecon_sa.csv"
 
 ski <- read_csv(source) %>%
  # dplyr::select(time,value) %>%
@@ -732,7 +732,7 @@ The indicator for
 
 ```{r, eval=T}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/elektro.csv"
-#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/trendecon_sa.csv"
 
 elektro <- read_csv(source) %>%
  # dplyr::select(time,value) %>%
@@ -774,7 +774,7 @@ The indicator for
 
 ```{r, eval=T}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/dienstleistung.csv"
-#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/trendecon_sa.csv"
 
 dienstleistung <- read_csv(source) %>%
  # dplyr::select(time,value) %>%
@@ -814,7 +814,7 @@ The indicator for
 
 ```{r, eval=T}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/baumarkt.csv"
-#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/trendecon_sa.csv"
 
 baumarkt <- read_csv(source) %>%
  # dplyr::select(time,value) %>%
@@ -857,7 +857,7 @@ The indicator for
 
 ```{r, eval=T}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/ekz.csv"
-#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/trendecon_sa.csv"
 
 ekz <- read_csv(source) %>%
  # dplyr::select(time,value) %>%
@@ -900,7 +900,7 @@ The indicator for
 
 ```{r, eval=T}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/fitness.csv"
-#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/trendecon_sa.csv"
 
 fitness <- read_csv(source) %>%
  # dplyr::select(time,value) %>%
@@ -942,7 +942,7 @@ The indicator for
 
 ```{r, eval=T}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/bibliotheken.csv"
-#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/trendecon_sa.csv"
 
 bibliotheken <- read_csv(source) %>%
  # dplyr::select(time,value) %>%
@@ -983,7 +983,7 @@ The indicator for
 
 ```{r, eval=T}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/mobilitaet_auto.csv"
-#source <- "../../gsv_data/raw/at/trendecon_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/trendecon_sa.csv"
 
 mobilitaet_auto <- read_csv(source) %>%
  # dplyr::select(time,value) %>%
@@ -1078,7 +1078,7 @@ ts_dygraphs(ts_c(
 ```{r}
 library(vars)
 library(ggfortify)
-#load("../../gsv_data/r_data/var.RData")
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/r_data/var.RData"
 source <- "https://github.com/FelixZangerl/gsv_data/blob/main/r_data/var.RData?raw=true"
 load(url(source))
 ```
