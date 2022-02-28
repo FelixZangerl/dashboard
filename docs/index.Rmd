@@ -516,7 +516,7 @@ The category *Watches and Jewellery* includes stores and brands selling luxuriou
 
 ```{r, eval=T}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/handel_offline.csv"
-source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/trendecon_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/tsgt/handel_offline.csv"
 
 handel_offline <- read_csv(source) %>%
  # dplyr::select(time,value) %>%
@@ -558,6 +558,7 @@ The indicator for
 
 ```{r}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/handel_offline_vgr.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/tsgt/handel_offline_vgr.csv"
 
 handel_offline_vgr_vgr <- read_csv(source)
 
@@ -576,7 +577,7 @@ dygraph(handel_offline_vgr_vgr)
 
 ```{r, eval=T}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/gastro.csv"
-source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/trendecon_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/tsgt/gastro.csv"
 
 gastro <- read_csv(source) %>%
  # dplyr::select(time,value) %>%
@@ -618,6 +619,7 @@ The indicator for
 
 ```{r}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/gastro_vgr.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/tsgt/gastro_vgr.csv"
 
 gastro_vgr <- read_csv(source) 
 
@@ -635,7 +637,7 @@ dygraph(gastro_vgr)
 
 ```{r, eval=T}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/corona.csv"
-source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/trendecon_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/tsgt/corona.csv"
 
 corona <- read_csv(source) %>%
  # dplyr::select(time,value) %>%
@@ -675,6 +677,7 @@ The indicator for
 
 ```{r}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/corona_comp.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/tsgt/corona_comp.csv"
 
 corona_comp <- read_csv(source) %>%
   ts_xts()
@@ -689,7 +692,7 @@ dygraph(corona_comp)
 
 ```{r, eval=T}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/ski.csv"
-source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/trendecon_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/tsgt/ski.csv"
 
 ski <- read_csv(source) %>%
  # dplyr::select(time,value) %>%
@@ -732,7 +735,7 @@ The indicator for
 
 ```{r, eval=T}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/elektro.csv"
-source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/trendecon_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/tsgt/elektro.csv"
 
 elektro <- read_csv(source) %>%
  # dplyr::select(time,value) %>%
@@ -774,7 +777,7 @@ The indicator for
 
 ```{r, eval=T}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/dienstleistung.csv"
-source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/trendecon_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/tsgt/dienstleistung.csv"
 
 dienstleistung <- read_csv(source) %>%
  # dplyr::select(time,value) %>%
@@ -814,7 +817,7 @@ The indicator for
 
 ```{r, eval=T}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/baumarkt.csv"
-source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/trendecon_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/tsgt/baumarkt.csv"
 
 baumarkt <- read_csv(source) %>%
  # dplyr::select(time,value) %>%
@@ -857,7 +860,7 @@ The indicator for
 
 ```{r, eval=T}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/ekz.csv"
-source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/trendecon_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/tsgt/ekz.csv"
 
 ekz <- read_csv(source) %>%
  # dplyr::select(time,value) %>%
@@ -900,7 +903,7 @@ The indicator for
 
 ```{r, eval=T}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/fitness.csv"
-source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/trendecon_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/tsgt/fitness.csv"
 
 fitness <- read_csv(source) %>%
  # dplyr::select(time,value) %>%
@@ -942,7 +945,7 @@ The indicator for
 
 ```{r, eval=T}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/bibliotheken.csv"
-source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/trendecon_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/tsgt/bibliotheken.csv"
 
 bibliotheken <- read_csv(source) %>%
  # dplyr::select(time,value) %>%
@@ -983,7 +986,7 @@ The indicator for
 
 ```{r, eval=T}
 source <- "https://raw.githubusercontent.com/FelixZangerl/gsv_data/main/tsgt/mobilitaet_auto.csv"
-source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/raw/at/trendecon_sa.csv"
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/tsgt/mobilitaet_auto.csv"
 
 mobilitaet_auto <- read_csv(source) %>%
  # dplyr::select(time,value) %>%
@@ -1032,7 +1035,9 @@ The main indicator shows co-movement with the consumer confidence and with the q
 
 ```{r}
 source <- "https://github.com/FelixZangerl/gsv_data/blob/main/r_data/reliability.RData?raw=true"
-load(url(source))
+source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/r_data/reliability.RData"
+
+load(source)
 
 ts_dygraphs(ts_c(
   `Perceived Economic Situation` = pes_m,
@@ -1079,8 +1084,8 @@ ts_dygraphs(ts_c(
 library(vars)
 library(ggfortify)
 source <- "/home/felix/Documents/proj/ma_thesis/gsv_data/r_data/var.RData"
-source <- "https://github.com/FelixZangerl/gsv_data/blob/main/r_data/var.RData?raw=true"
-load(url(source))
+#source <- "https://github.com/FelixZangerl/gsv_data/blob/main/r_data/var.RData?raw=true"
+load(source)
 ```
 
 ### Results
